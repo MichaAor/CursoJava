@@ -1,13 +1,19 @@
 package com.company;
 
-import java.text.CharacterIterator;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        //Ej1
-        /*
+        //ej1();
+        //ej2();
+        //ej3();
+        //ej4();
+        //ej5();
+        //ej6();
+    }
+
+    public static void ej1(){
        double weigth ,height, imc;
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter your weight");
@@ -24,10 +30,24 @@ public class Main {
         if(imc>25 && 30<imc){ System.out.println("Diagnostico: Sobrepeso"); }
         if(imc>30 && 40<imc){ System.out.println("Diagnostico: Sobrepeso Cronico"); }
         if(imc > 40){ System.out.println("Diagnostico: Hospitalizado"); }
-         */
+    }
 
-        //Ej3
-        /*
+    public static void ej2(){
+        Scanner sc = new Scanner(System.in);
+        int b,a,c,disc;
+        System.out.println("Enter the value of b ");   b = sc.nextInt();
+        System.out.println("Enter the value of a ");   a = sc.nextInt();
+        System.out.println("Enter the value of c ");   c = sc.nextInt();
+
+        disc = (int) (Math.pow(b,2) - (4*a*c));
+
+        System.out.println(disc);
+        if(disc>0){ System.out.println("¡¡Hay dos raices reales distintas!!"); }
+        if(disc==0){ System.out.println("¡¡Hay raices iguales!!"); }
+        if(disc<0){ System.out.println("¡¡Hay raices imaginarias!!"); }
+    }
+
+    public static void ej3(){
         int n1,n2,n3;
         float res;
         Scanner sc = new Scanner(System.in);
@@ -39,9 +59,9 @@ public class Main {
         if(res<10){ System.out.println("Promedio = " + res + "¡¡REPROBADO!!"); }
         if(res>10 && res<15){ System.out.println("Promedio = " + res + "¡¡APROBADO!!"); }
         if(res>15){ System.out.println("Promedio = " + res + "¡¡EXIMIDO!!"); }
-         */
-        //EJ4
-        /*
+    }
+
+    public static void ej4(){
         int v1, v2, v3, vm = 0;
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a number: "); v1 = sc.nextInt();
@@ -59,10 +79,9 @@ public class Main {
        }
         if (v3 == v1 && v3 == v2) { System.out.println("Los numeros son iguales"); }
         if (vm != 0) { System.out.println("El mayor es: " + vm); }
-        */
+    }
 
-        //EJ5
-        /*
+    public static void ej5(){
         int v1, v2, v3, vm = 0;
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a number: "); v1 = sc.nextInt();
@@ -80,9 +99,10 @@ public class Main {
         }
         if (v3 == v1 && v3 == v2) { System.out.println("Los numeros son iguales"); }
         if (vm != 0) { System.out.println("El menor es: " + vm); }
-         */
 
-        //EJ6
+    }
+
+    public static void ej6(){
         int v, i=0,j=1 ,flag =1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a number: "); v = sc.nextInt();
