@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ej1();
-	    ej2();
+        //ej1();
+	    //ej2();
+        Game game = new Game();
+        game.mostrarGame();
     }
 
     public static void ej1(){
@@ -29,4 +31,17 @@ public class Main {
             }
         }
     }
+
+    public static  void ejCompl(){
+        int arr[] = new int[10];  int var;
+        for(int i=0; i<10; i++){
+            var = (int)(Math.random() * 200);
+            if(var %2 == 0 ) {
+                    arr[i] = var;
+            }
+            i++;
+        }
+    }
+
+
 }
