@@ -86,4 +86,7 @@ public class Ej4 {
         System.out.println("Ingrese su dato: ");
         return sc.nextLine();
     }
+
+
+
 }

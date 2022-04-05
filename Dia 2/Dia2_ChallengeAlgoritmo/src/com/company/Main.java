@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import static com.company.Ej3.ej3;
 import static com.company.Ej4.ej4;
+import static com.company.Ej5.ej5;
 
 public class Main {
 
@@ -13,7 +14,8 @@ public class Main {
             //ej1();
             //ej2();
             //ej3();
-        ej4();
+        //ej4();
+        ej5();
 
     }
 
@@ -68,6 +70,7 @@ public class Main {
             System.out.println(pop[i]);
         }
     }
+
 
     public static char seguir(){
         Scanner sc  = new Scanner(System.in);
