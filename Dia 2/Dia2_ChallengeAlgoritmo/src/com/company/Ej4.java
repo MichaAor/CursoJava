@@ -57,14 +57,14 @@ public class Ej4 {
     }
 
     public static String[][] llenarMat(){
-        String[][] ciu = new String[5][4];
+        String[][] ciu = new String[4][4];
         //String[][] ciu = {{"Ciudad,Pais","1","2"},{" ","Argentina","Bolivia"},{"1","Rosario","Potosi"}};
 
 
         ciu[0][0] = "CIUDAD/PAIS";
         ciu[1][0] = "/ /";
         boolean flag = true;
-         int cont=1,cont2=0;
+         int cont=1,cont2=1;
         for(int i=1;i < ciu.length;i++){
             ciu[0][i] = String.valueOf(cont++);
             System.out.println("Pais");

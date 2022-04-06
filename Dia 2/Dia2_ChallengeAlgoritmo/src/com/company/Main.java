@@ -1,12 +1,9 @@
 package com.company;
 
-import java.util.Arrays;
+import com.company.EJ5.Ej5;
+
 import java.util.Locale;
 import java.util.Scanner;
-
-import static com.company.Ej3.ej3;
-import static com.company.Ej4.ej4;
-import static com.company.Ej5.ej5;
 
 public class Main {
 
@@ -14,8 +11,9 @@ public class Main {
             //ej1();
             //ej2();
             //ej3();
-        //ej4();
-        ej5();
+            //ej4();
+            Ej5 ej5 = new Ej5();
+            ej5.ej5();;
 
     }
 
@@ -54,6 +52,7 @@ public class Main {
         }while(rta == 's');
     }
 
+    //EJ2
     public static void ej2(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese una palabra: ");
@@ -70,7 +69,6 @@ public class Main {
             System.out.println(pop[i]);
         }
     }
-
 
     public static char seguir(){
         Scanner sc  = new Scanner(System.in);
