@@ -1,58 +1,49 @@
 package com.company;
 
 public class Stack {
-    private int top =-1;
-    private Object[] content;
     private int size;
+    private String[] array;
+    private int top = -1;
 
     public Stack(int size){
-        if(size <=0) {
-            throw new ExceptionInInitializerError("El tamaño de la pila debe ser siempre mayor a 0");
+        if(size <= 0){
+            throw new IllegalArgumentException("Debes ingresar un valor mayor que 0.");
         }
         this.size = size;
-        content = new Object[size];
+        array = new String[size];
     }
 
-    public void push(Object value){
-        content[++this.top] = value;
+    public void push(String value){
+        array[++this.top] = value;
     }
 
-    public Object pop(){
-        return this.content[this.top];
+    public String pop(){
+        return array[this.top--];
     }
 
-    public boolean empty(){
-        return size == 0;
+    public String Views(){
+        return array[this.top];
     }
 
-    public boolean full(){
-        return this.size == this.top+1;
+    public boolean Empty(){
+        return this.top < 0;
     }
 
-    public boolean search(Object object){
+    public boolean Full(){
+        return this.top == this.size -1;
+    }
+
+    public boolean Search(String sel){
+        String[] aux = this.array;
         boolean rta = false;
-        int i=0;
-            while(i < this.content.length ^ rta == false){
-                if(this.content[i].equals(object)){
+        int i =0;
+        while(i < aux.length ^ rta == false){
+                if(sel.compareTo(sel) ==0){
                     rta = true;
                 }
-            }
-            return rta;
-    }
-
-    public int amountObj(){
-        return this.top;
-    }
-
-    public Object top(){
-        return this.content[this.top-1];
-    }
-
-    public void view(){
-        while(!empty()){
-            System.out.println(this.top);
-            this.pop();
         }
+        return rta;
     }
+
 
 }
