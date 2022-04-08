@@ -10,17 +10,17 @@ public class Particular extends Vehiculo{
     }
 
     @Override
-    public void acl(float kmsXh) throws demRap{
-        if(kmsXh < 100) {
+    public void acl(float kmsXh){
             super.acl(kmsXh);
-        }else {
-            throw new demRap("Se esta extendiendo la velocidad maxima");
-        }
+    }
+
+    public int getPuertas(){
+        return this.puertas;
     }
 
     @Override
     public String toString() {
         return super.toString()+
-                "\nPuertas: " + this.puertas;
+                "\nPuertas: " + getPuertas();
     }
 }

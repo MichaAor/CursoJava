@@ -5,15 +5,17 @@ import com.company.EJ5.Ej5;
 import java.util.Locale;
 import java.util.Scanner;
 
+import static com.company.Ej4.ej4;
+
 public class Main {
 
     public static void main(String[] args) {
             //ej1();
             //ej2();
             //ej3();
-            //ej4();
-            Ej5 ej5 = new Ej5();
-            ej5.ej5();;
+        ej4();
+            //Ej5 ej5 = new Ej5();
+            //ej5.ej5();;
 
     }
 

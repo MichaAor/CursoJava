@@ -5,16 +5,14 @@ import java.util.Scanner;
 public class Ej5 {
     private Jugador j1;
     private Jugador j2;
-    private String
 
     public void ej5() {
         Scanner sc = new Scanner(System.in);
         System.out.println("///Ahorcado///");
         System.out.println("Ingrese la palabra");
-        String palabra  = sc.nextLine();
-        String[] letras = palabra.
-
-
+        String palabra = sc.nextLine();
+    }
+/*
         while(intentos <= 6){
             if(letras.legnth > 0){
                 System.out.println("No se ingreso una palabra");
@@ -138,5 +136,5 @@ public class Ej5 {
     }
 
 
-
+*/
 }

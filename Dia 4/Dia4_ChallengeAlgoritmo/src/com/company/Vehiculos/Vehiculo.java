@@ -9,8 +9,8 @@ public class Vehiculo {
         this.mat = mat;
         this.vel = 0    ;
     }
-    public void acl(float kmsXh) throws demRap {
-        this.vel = kmsXh;
+    public void acl(float kmsXh){
+        this.vel = this.vel+ kmsXh;
     }
 
 

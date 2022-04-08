@@ -15,11 +15,15 @@ public class Carga extends Vehiculo{
         this.remolque = remolque;
     }
 
-    public void acl(float kmsXh) throws demRap{
+    public void acl(float kmsXh){
         if(kmsXh < 100) {
             super.acl(kmsXh);
         }else {
-            throw new demRap("Se esta extendiendo la velocidad maxima");
+            try {
+                throw new demRap("Se esta extendiendo la velocidad maxima");
+            } catch (com.company.Vehiculos.demRap demRap) {
+                demRap.printStackTrace();
+            }
         }
     }
 
