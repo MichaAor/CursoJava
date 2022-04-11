@@ -1,5 +1,5 @@
 package com.company.Review;
-
+//Ejemplo para singleton
 public class Logger {
     private static Logger log;
     private String value;
