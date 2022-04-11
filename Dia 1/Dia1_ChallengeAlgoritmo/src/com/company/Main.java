@@ -2,15 +2,12 @@ package com.company;
 
 import java.util.Scanner;
 
+import static com.company.MenuEjercicios.mostrarMenu;
+
 public class Main {
 
     public static void main(String[] args) {
-        //ej1();
-        //ej2();
-        //ej3();
-        //ej4();
-        //ej5();
-        //ej6();
+        mostrarMenu();
     }
 
     public static void ej1(){
