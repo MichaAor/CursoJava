@@ -2,7 +2,7 @@ package com.company;
 
 public class Stack {
     private int size;
-    private String[] array;
+    private int[] array;
     private int top = -1;
 
     public Stack(int size){
@@ -10,18 +10,18 @@ public class Stack {
             throw new IllegalArgumentException("Debes ingresar un valor mayor que 0.");
         }
         this.size = size;
-        array = new String[size];
+        array = new int[size];
     }
 
-    public void push(String value){
+    public void push(int value){
         array[++this.top] = value;
     }
 
-    public String pop(){
+    public int pop(){
         return array[this.top--];
     }
 
-    public String Views(){
+    public int Views(){
         return array[this.top];
     }
 
@@ -33,17 +33,49 @@ public class Stack {
         return this.top == this.size -1;
     }
 
-    public boolean Search(String sel){
-        String[] aux = this.array;
+    public boolean Search(int sel){
+        Stack stack = new Stack(this.size);
         boolean rta = false;
-        int i =0;
-        while(i < aux.length ^ rta == false){
-                if(sel.compareTo(sel) ==0){
-                    rta = true;
-                }
-        }
+       while(!Empty() ^ rta == false){
+           if(sel == this.Views()){
+               rta = true;
+           }
+           stack.push(this.pop());
+       }
         return rta;
+    }
+    public void viewStack(){
+        Stack stack = this;
+        Stack aux = new Stack(this.size);
+        while(!stack.Empty()){
+            System.out.println("["+stack.Views()+"]");
+            aux.push(stack.pop());
+        }
+    }
+
+    public int Counter(){
+        Stack stack = this;
+        int i =0;
+        Stack aux = new Stack(this.size);
+        while(!stack.Empty()){
+            System.out.println("["+stack.Views()+"]");
+            aux.push(stack.pop());
+            i++;
+        }
+        return i;
+    }
+
+    public int sumaRecu(int num){
+        Stack stack = this;
+        int sum =0;
+        if(!stack.Empty()){
+            sum += sumaRecu(stack.pop());
+        }
+        return sum;
     }
 
 
+
 }
+
+
