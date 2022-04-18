@@ -12,10 +12,10 @@ public class DeleteClassCliente {
         try {
             Connection connection = connectionDB.connect();
 
-            PreparedStatement delete = connection.prepareStatement("DELETE FROM Cliente WHERE idCliente = ? ");
-            System.out.println("Ingrese id del Cliente a borrar: ");
-            String id = String.valueOf(sc.next().charAt(0));
-                delete.setString(1,id);
+            PreparedStatement delete = connection.prepareStatement("DELETE FROM Cliente WHERE dni = ? ");
+            System.out.println("Ingrese dni del Cliente a borrar: ");
+            String dni = String.valueOf(sc.nextInt());
+                delete.setString(1, dni);
                 delete.executeUpdate();
             System.out.println("Record successfully removed");
 

@@ -15,13 +15,13 @@ public class UpdateClassCliente {
 
             PreparedStatement modify = connection.prepareStatement("UPDATE Cliente " +
                     "SET nombre =?, apellido=?, dni=?, direccion=?, fechaNac=? " +
-                    "WHERE idCliente= ?");
+                    "WHERE dni= ?");
             modify.setString(1, cliente.getNombre());
             modify.setString(2, cliente.getApellido());
             modify.setInt(3, cliente.getDni());
             modify.setString(4, cliente.getDireccion());
             modify.setDate(5, cliente.getFechaNac());
-            modify.setInt(6, idCliente);
+            modify.setInt(6, cliente.getDni());
             modify.executeUpdate();
             System.err.println("Data was inserted!!");
 

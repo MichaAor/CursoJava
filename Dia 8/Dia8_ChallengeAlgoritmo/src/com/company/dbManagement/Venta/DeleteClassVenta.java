@@ -12,9 +12,9 @@ public class DeleteClassVenta {
         try {
             Connection connection = connectionDB.connect();
 
-            PreparedStatement delete = connection.prepareStatement("DELETE FROM Venta WHEREE numVenta = ? ");
+            PreparedStatement delete = connection.prepareStatement("DELETE FROM Venta WHERE numVenta = ? ");
             System.out.println("Ingrese numero de la Venta a borrar: ");
-            String id = String.valueOf(sc.next().charAt(0));
+            String id = String.valueOf(sc.nextInt());
                 delete.setString(1,id);
                 delete.executeUpdate();
             System.out.println("Record successfully removed");

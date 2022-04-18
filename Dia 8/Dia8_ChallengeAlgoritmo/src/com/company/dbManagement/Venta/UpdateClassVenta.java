@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.util.Scanner;
 
 public class UpdateClassVenta {
-    public static void update(ConnectionDB connectionDB, Venta venta,int numVenta){
+    public static void update(ConnectionDB connectionDB, Venta venta){
         Scanner sc = new Scanner(System.in);
         try {
             Connection connection = connectionDB.connect();
@@ -19,7 +19,7 @@ public class UpdateClassVenta {
             modify.setDate(1, venta.getFechaVenta());
             modify.setInt(2, venta.getIdCliente());
             modify.setInt(3, venta.getIdVendedor());
-            modify.setInt(4, numVenta);
+            modify.setInt(4, venta.getNumVenta());
             modify.executeUpdate();
             System.err.println("Data was inserted!!");
 

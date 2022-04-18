@@ -1,16 +1,18 @@
 package com.company.Challenge.Clases;
 
 public class Producto {
-    private int codigoProd;
+    private int codProd;
     private float precioUnit;
     private int cantidad;
     private int stockMin;
 
-    public int getCodigoProd() {
-        return codigoProd;
+    public Producto(){}
+
+    public int getCodProd() {
+        return codProd;
     }
-    public void setCodigoProd(int codigoProd) {
-        this.codigoProd = codigoProd;
+    public void setCodProd(int codProd) {
+        this.codProd = codProd;
     }
 
     public float getPrecioUnit() {
@@ -32,5 +34,14 @@ public class Producto {
     }
     public void setStockMin(int stockMin) {
         this.stockMin = stockMin;
+    }
+
+    @Override
+    public String toString() {
+        return "\nProducto: " +
+                "\nCodigoo del Producto: " + this.getCodProd() +
+                "\nPrecio Unitario: " + this.getPrecioUnit() +
+                "\nCantidad: " + this.getCantidad() +
+                "\nStock Minimo: " + this.getStockMin();
     }
 }

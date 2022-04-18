@@ -7,6 +7,7 @@ import com.company.Challenge.Clases.Vendedor;
 import java.util.Scanner;
 
 public class FactoryClass{
+    /*
     public static Persona fabrica(int tipo){
         Scanner sc = new Scanner(System.in);
         switch (tipo){
@@ -17,5 +18,5 @@ public class FactoryClass{
             default:
                 return null;
         }
-    }
+    }*/
 }

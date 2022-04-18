@@ -1,59 +1,37 @@
 package com.company;
 
-<<<<<<< HEAD
-import com.company.Challenge.Clases.Persona;
-import com.company.Challenge.Creacion.CamposPersona;
-import com.company.Challenge.Creacion.FactoryClass;
+import com.company.Challenge.Clases.Cliente;
+import com.company.Challenge.Clases.Producto;
+import com.company.Challenge.Clases.Vendedor;
+import com.company.Challenge.Clases.Venta;
+import com.company.Challenge.Creacion.CrearCliente;
 
-
-
-=======
-import com.company.Challenge.Cliente;
+import com.company.Challenge.Creacion.CrearProducto;
+import com.company.Challenge.Creacion.CrearVendedor;
+import com.company.Challenge.Creacion.CrearVenta;
 import com.company.dbManagement.ConnectionDB;
 
 import java.sql.Date;
-import java.util.Scanner;
+import java.time.LocalDateTime;
 
-import static com.company.dbManagement.InsertClass.insert;
-import static com.company.dbManagement.SelectClass.select;
->>>>>>> 961062d24d1c61bdb45b93be283aaaf7482ae794
+import static com.company.dbManagement.Cliente.InsertClassCliente.insert;
+import static com.company.dbManagement.Cliente.SelectClassCliente.select;
 
 
 public class Main {
     public static void main(String[] args) {
-<<<<<<< HEAD
-        /*ConnectionDB connectionDB = ConnectionDB.getInstance();
-        //insert(connectionDB,createClient());
-        select(connectionDB);*/
-        Persona persona1 = FactoryClass.fabrica(1);
-        persona1 = CamposPersona.registroDatos(persona1);
-        System.out.println(persona1.toString());
+        Cliente cliente = CrearCliente.registroDatos();
+        //System.out.println(cliente);
+        //Vendedor vendedor = CrearVendedor.registroDatos();
+        //System.out.println(vendedor.toString());
+       //Producto producto = CrearProducto.registroProducto();
+        //System.out.println(producto);
+        //Venta venta = CrearVenta.registrarVenta();
+        //System.out.println(venta);
 
 
-=======
         ConnectionDB connectionDB = ConnectionDB.getInstance();
-        //insert(connectionDB,createClient());
+        insert(connectionDB,cliente);
         select(connectionDB);
-    }
-
-    public static Cliente createClient(){
-        Scanner sc = new Scanner(System.in);
-        Date date;
-        Cliente cliente = new Cliente();
-        System.out.println("Ingrese el nombre: ");
-        cliente.setNombre(sc.nextLine());
-        System.out.println("Ingrese el apellido: ");
-        cliente.setApellido(sc.nextLine());
-        System.out.println("Ingrese el dni: ");
-        cliente.setDni(sc.nextInt());
-        sc = new Scanner(System.in);
-        System.out.println("Ingrese la direccion: ");
-        cliente.setDireccion(sc.nextLine());
-        System.out.println("Ingrese la fecha de nacimiento siguiendo el sig formato dd/mm/yy: ");
-        date = new Date(sc.nextInt(),sc.nextInt(),sc.nextInt());
-        cliente.setFechaNac(date);
-
-        return cliente;
->>>>>>> 961062d24d1c61bdb45b93be283aaaf7482ae794
     }
 }

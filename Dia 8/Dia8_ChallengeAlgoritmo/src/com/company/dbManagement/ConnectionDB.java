@@ -13,7 +13,7 @@ public class ConnectionDB {
 
     private static final String URL = "jdbc:mysql://localhost/empresa_db";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "4190201306022019";
+    private static final String PASSWORD = "41902013";
 
     public Connection connect(){
         try {

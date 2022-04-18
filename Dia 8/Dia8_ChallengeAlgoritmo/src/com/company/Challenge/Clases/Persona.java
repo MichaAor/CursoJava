@@ -9,6 +9,7 @@ public abstract class Persona {
     private String direccion;
     private Date fechaNac;
 
+
     public String getNombre() {
         return nombre;
     }
@@ -42,15 +43,5 @@ public abstract class Persona {
     }
     public void setFechaNac(Date fechaNac) {
         this.fechaNac = fechaNac;
-    }
-
-    @Override
-    public String toString() {
-        return this.getClass().getSimpleName() +
-                    "\nNombre: " + this.getNombre() +
-                    "\nApellido: " + this.getApellido() +
-                    "\nDNI: " + this.getDni() +
-                    "\nDireccion: " + this.getDireccion() +
-                    "\nFecha de Nacimiento: " + this.getFechaNac().toString();
     }
 }
