@@ -17,21 +17,23 @@ import java.time.LocalDateTime;
 import static com.company.dbManagement.Cliente.InsertClassCliente.insert;
 import static com.company.dbManagement.Cliente.SelectClassCliente.select;
 
-
 public class Main {
     public static void main(String[] args) {
+        Date date = new Date(1999,10,12);
+        LocalDateTime date1 = LocalDateTime.now();
+        System.out.println(date1);
         Cliente cliente = CrearCliente.registroDatos();
-        //System.out.println(cliente);
+        System.out.println(cliente);
         //Vendedor vendedor = CrearVendedor.registroDatos();
         //System.out.println(vendedor.toString());
        //Producto producto = CrearProducto.registroProducto();
         //System.out.println(producto);
         //Venta venta = CrearVenta.registrarVenta();
         //System.out.println(venta);
-
-
+/*
         ConnectionDB connectionDB = ConnectionDB.getInstance();
         insert(connectionDB,cliente);
-        select(connectionDB);
+        select(connectionDB);*/
+
     }
 }

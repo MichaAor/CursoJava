@@ -68,10 +68,6 @@ CREATE TABLE IF NOT EXISTS Consulta_finalizada (
     
     CREATE TRIGGER bdConsultasFinal AFTER 
 	INSERT ON Consulta FOR EACH ROW
-<<<<<<< HEAD
-=======
-
->>>>>>> 961062d24d1c61bdb45b93be283aaaf7482ae794
 		INSERT INTO Consulta_finalizada(idConsulta_finalizada,fechaConsulta,Paciente_idPaciente,Doctor_idDoctor)
         VALUES (0,NEW.fechaConsulta,NEW.Paciente_idPaciente,NEW.Doctor_idDoctor);
 

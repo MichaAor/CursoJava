@@ -4,6 +4,7 @@ import com.company.Challenge.Clases.Cliente;
 import com.company.Challenge.Clases.Persona;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class CrearCliente {
