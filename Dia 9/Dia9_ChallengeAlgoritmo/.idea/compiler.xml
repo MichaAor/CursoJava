@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Dia10_ChallengeAlgoritmo" />
+        <module name="Dia9_ChallengeAlgoritmo" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Dia9_ChallengeAlgoritmo" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

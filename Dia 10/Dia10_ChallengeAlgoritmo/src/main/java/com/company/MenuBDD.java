@@ -3,7 +3,6 @@ package com.company;
 import com.mongodb.client.*;
 import org.bson.Document;
 
-import java.awt.*;
 import java.util.Scanner;
 
 
@@ -30,7 +29,8 @@ public class MenuBDD {
     public void ejecutarEjercicios(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el num de la tarea que desea realizar ");
-        System.out.println("1.Registrar Datos:  \n2.Consultar Datos: \n3.Eliminar Datos \n4.Listado General ");
+        System.out.println("1.Registrar Datos:  \n2.Consultar Datos: " +
+                "\n3.Eliminar Datos \n4.Listado General \n5.Modificar Datos");
         switch (sc.nextInt()){
             case 1:
                     RegistrarDatos.registrar(this.personasData);
@@ -48,6 +48,11 @@ public class MenuBDD {
             case 4:
                 ListadoGeneral.listarCollection(this.personasData);
                 break;
+            case 5:
+                /*sc = new Scanner(System.in);
+                System.out.println("Ingrese el dni de la persona a MODIFICAR: ");
+                ModificarDatos.modificar(this.personasData,sc.nextInt());
+                */break;
             case 0:
                 System.exit(0);
                 break;

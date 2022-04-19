@@ -1,3 +1,5 @@
+DROP DATABASE empresa_db;
+
 CREATE DATABASE IF NOT EXISTS Empresa_db;
 USE `Empresa_db` ;
 
@@ -53,18 +55,7 @@ CREATE TABLE IF NOT EXISTS VentaDetalle (
     REFERENCES `Venta` (`numVenta`)
     );
     
-INSERT INTO Cliente VALUES (0,'Javier','Miraflores',42865972,'Salta 1987','1978-02-05');
-INSERT INTO Cliente VALUES (0,'Manuela','Gonzales',44694820,'AV.Luro 3002','1985-10-08');
-INSERT INTO Cliente VALUES (0,'Agustina','Puerri',40789410,'Balcarce 2150','1980-08-15');
-INSERT INTO Cliente VALUES (0,'Esteba','Pietro',30147852,'Roca 1223','1998-04-22');
-INSERT INTO Cliente VALUES (0,'Lucas','Salvio',19337762,'Jujuy 27','1990-09-25');
-
-INSERT INTO Vendedor VALUES (0,'Martina','Almeida',83383806,'Alberti 752','1972-05-25',33204 );
-INSERT INTO Vendedor VALUES (0,'Lucia','Buendía',96794497,'Alvarado 1456','1982-04-02',17312 );
-INSERT INTO Vendedor VALUES (0,'Merlin','Vega',17462757,'Av. Colon 2001','1976-07-21',95457 );
-INSERT INTO Vendedor VALUES (0,'Juan','Hierro',94827075,'Sarmiento 4520','2000-12-30',10624 );
-INSERT INTO Vendedor VALUES (0,'Facundo','Mosquera',70978636,'Saavedra 7892','1995-01-20',45987);
-
+			/*----------EJERCICIO 1----------*/
 INSERT INTO Producto VALUES (550944,128,1000,200);
 INSERT INTO Producto VALUES (538493,261,1000,200);
 INSERT INTO Producto VALUES (892469,189,1000,200);
@@ -75,8 +66,23 @@ INSERT INTO Producto VALUES (774584,178,1000,200);
 INSERT INTO Producto VALUES (211784,125,1000,200);
 INSERT INTO Producto VALUES (449930,80,1000,200);
 INSERT INTO Producto VALUES (924655,99,1000,200);
+    
+    
+			/*----------EJERCICIO 2----------*/    
+INSERT INTO Cliente VALUES (0,'Javier','Miraflores',42865972,'Salta 1987','1978-02-05');
+INSERT INTO Cliente VALUES (0,'Manuela','Gonzales',44694820,'AV.Luro 3002','1985-10-08');
+INSERT INTO Cliente VALUES (0,'Agustina','Puerri',40789410,'Balcarce 2150','1980-08-15');
+INSERT INTO Cliente VALUES (0,'Esteban','Pietro',30147852,'Roca 1223','1998-04-22');
+INSERT INTO Cliente VALUES (0,'Lucas','Salvio',19337762,'Jujuy 27','1990-09-25');
+
+INSERT INTO Vendedor VALUES (0,'Martina','Almeida',83383806,'Alberti 752','1972-05-25',33204 );
+INSERT INTO Vendedor VALUES (0,'Lucia','Buendía',96794497,'Alvarado 1456','1982-04-02',17312 );
+INSERT INTO Vendedor VALUES (0,'Merlin','Vega',17462757,'Av. Colon 2001','1976-07-21',95457 );
+INSERT INTO Vendedor VALUES (0,'Juan','Hierro',94827075,'Sarmiento 4520','2000-12-30',10624 );
+INSERT INTO Vendedor VALUES (0,'Facundo','Mosquera',70978636,'Saavedra 7892','1995-01-20',45987);
 
 
+/*----------EJERCICIO 3----------*/   
 INSERT INTO Venta VALUES (0,'2022-08-11',0,1,1);
 INSERT INTO Venta VALUES (0,'2022-01-24',0,1,5);
 INSERT INTO Venta VALUES (0,'2022-05-30',0,1,3);
@@ -104,7 +110,6 @@ INSERT INTO VentaDetalle() VALUES (294282,2);
 INSERT INTO VentaDetalle() VALUES (294282,2);
 INSERT INTO VentaDetalle() VALUES (924655,3);
 INSERT INTO VentaDetalle() VALUES (449930,3);
-
 
 INSERT INTO VentaDetalle VALUES (449930,4);
 INSERT INTO VentaDetalle VALUES (924655,4);
@@ -134,17 +139,27 @@ INSERT INTO VentaDetalle VALUES (240933,14);
 INSERT INTO VentaDetalle VALUES (538493,15);
 INSERT INTO VentaDetalle VALUES (774584,15);
 
+/*----------EJERCICIO 4----------*/   
 
+SELECT Venta.numVenta,Venta.fechaVenta,Venta.total,Venta.Vendedor_idVendedor ,Venta.Cliente_idCliente
+FROM Venta Inner JOIN Cliente ON Venta.Cliente_idCliente = Cliente.idCliente WHERE Cliente.nombre LIKE "%A%";
 
-UPDATE Facturacion SET fechaCompra = '2022-02-25' WHERE numFactura = '468';
+/*----------EJERCICIO 5----------*/   
+SELECT Producto.codProd,Producto.precioUnit,Producto.cantidad,Producto.stockMin
+FROM Producto Inner JOIN VentaDetalle ON  Producto.codProd= VentaDetalle.Producto_codProd;
 
-select*from Cliente where nombre like 'a';
+/*----------EJERCICIO 6----------*/   
+SELECT Vendedor.nombre,Vendedor.apellido,Vendedor.dni,Vendedor.direccion,Vendedor.fechaNac,Vendedor.salario,Venta.total
+FROM Vendedor Inner JOIN Venta ON  Vendedor.idVendedor = Venta.Vendedor_idVendedor;
 
-/**/
+/*----------EJERCICIO 6----------*/  
+CREATE TRIGGER actualizarStock AFTER INSERT ON Venta
+
+/*
 select *,Venta.total from Vendedor,Venta where Venta.Vendedor_idVendedor = Vendedor.idVendedor AND Vendedor.dni = 17462757;
 
-select * from Venta,Cliente where Venta.Cliente_idCliente = Cliente.idCliente AND Cliente.nombre like '%A%';
-
+select * from Venta where Venta.Cliente_idCliente = Cliente.idCliente AND Cliente.nombre like '%A%';
+*/
 
 SELECT*FROM Cliente;
 SELECT*FROM Vendedor;
