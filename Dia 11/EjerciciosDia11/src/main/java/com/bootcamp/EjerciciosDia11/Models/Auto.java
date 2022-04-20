@@ -1,4 +1,4 @@
-package com.company.EjerciciosDia11.Models;
+package com.bootcamp.EjerciciosDia11.Models;
 
 public class Auto {
     private String modelo,marca,patente;

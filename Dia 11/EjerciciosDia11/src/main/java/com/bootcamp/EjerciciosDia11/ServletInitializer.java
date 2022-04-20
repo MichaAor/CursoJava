@@ -1,4 +1,4 @@
-package com.company.EjerciciosDia11;
+package com.bootcamp.EjerciciosDia11;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

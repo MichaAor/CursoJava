@@ -1,4 +1,4 @@
-package com.company.EjerciciosDia11;
+package com.bootcamp.EjerciciosDia11;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

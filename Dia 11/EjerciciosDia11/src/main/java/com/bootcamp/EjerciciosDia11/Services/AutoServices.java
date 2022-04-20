@@ -1,6 +1,6 @@
-package com.company.EjerciciosDia11.Services;
+package com.bootcamp.EjerciciosDia11.Services;
 
-import com.company.EjerciciosDia11.Models.Auto;
+import com.bootcamp.EjerciciosDia11.Models.Auto;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -12,7 +12,7 @@ public class AutoServices {
     public static String registrarAuto(String modelo, String marca, String patente,
                                      float precio, int cantPuertas) throws IOException {
         ArrayList<Auto> autos = leerAutosJSON();
-        Auto auto = null;
+        Auto auto;
         String str = "FALLO EL REGISTRO,INTENTE NUEVAMENTE";
         if(!consultarPatente(patente)){
             auto = new Auto(modelo, marca, patente, precio, cantPuertas);
@@ -26,22 +26,41 @@ public class AutoServices {
     public static boolean consultarPatente(String patente) throws IOException {
         ArrayList<Auto> autos = leerAutosJSON();
         boolean rta = false;
-        for(Auto auto : autos){
-            if(auto.getPatente().compareTo(patente)==0){
-                rta = true;
-                break;
+        if(!autos.isEmpty()) {
+            for (Auto auto : autos) {
+                if (auto.getPatente().compareTo(patente) == 0) {
+                    rta = true;
+                    break;
+                }
             }
+        }else {
+            rta = true;
         }
         return rta;
     }
 
+    public static String consultarTodos() throws IOException {
+        ArrayList<Auto> autos = leerAutosJSON();
+        String rta = "\n----AUTOS--------\n";
+        if(!autos.isEmpty()) {
+            for(Auto auto : autos){
+                   rta += auto.toString()+"\n";
+                }
+            }else{
+            rta += "\nNo hay autos registrados";
+        }
+        return rta;
+        }
+
     public static String consultarAuto(String patente) throws IOException {
         ArrayList<Auto> autos = leerAutosJSON();
         String rta = "No esta registrado ningun auto con esa patente";
+        if(!autos.isEmpty()) {
         for(Auto auto : autos){
             if(auto.getPatente().compareTo(patente)==0){
                rta = auto.toString();
                 break;
+                }
             }
         }
         return rta;
@@ -50,12 +69,15 @@ public class AutoServices {
     public static String borrarAuto(String patente) throws IOException {
         ArrayList<Auto> autos = leerAutosJSON();
         String rta = "No esta registrado ningun auto con esa patente";
+        if(!autos.isEmpty()) {
         for(Auto auto : autos){
             if(auto.getPatente().compareTo(patente)==0){
                 autos.remove(auto);
                 rta = "Se ha encontrado y borrado con exito el auto";
                 break;
+                }
             }
+            guardarAutosJSON(autos);
         }
         return rta;
     }
