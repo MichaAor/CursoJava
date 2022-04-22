@@ -12,7 +12,10 @@ import static com.bootcamp.EjerciciosDia11.Services.AutoServices.*;
 public class EjerciciosDia11Application {
 
 	public static void main(String[] args) throws IOException {
-		/*String modelo,marca,patente;
+		SpringApplication.run(EjerciciosDia11Application.class, args);
+	}
+
+	/*/*String modelo,marca,patente;
 		int cantPuertas; float precio;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Ingrese es su modelo");
@@ -26,10 +29,8 @@ public class EjerciciosDia11Application {
 		System.out.println("Ingrese es su precio");
 		precio = sc.nextFloat();
 		System.out.println(registrarAuto(modelo,marca,patente,precio,cantPuertas));*/
-		//System.out.println(consultarTodos());
-		//System.out.println(consultarAuto("AMC-445"));
-		//System.out.println(borrarAuto("AMC-445"));
-		SpringApplication.run(EjerciciosDia11Application.class, args);
-	}
+	//System.out.println(consultarTodos());
+	//System.out.println(consultarAuto("AMC-445"));
+	//System.out.println(borrarAuto("AMC-445"));*/
 
 }

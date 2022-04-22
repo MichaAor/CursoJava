@@ -1,10 +1,10 @@
 com\company\MenuBDD.class
-com\company\ListadoGeneral.class
+com\company\MongoDBSingleton.class
 com\company\REVIEW.class
+com\company\Service\ConsultarDatos.class
+com\company\Service\RegistrarDatos.class
 com\company\Main.class
-com\company\Persona.class
-com\company\ConsultarDatos.class
-com\company\RegistrarDatos.class
-com\company\ModificarDatos.class
-com\company\CrearPersona.class
-com\company\EliminarDatos.class
+com\company\Service\CrearPersona.class
+com\company\Service\EliminarDatos.class
+com\company\Models\Persona.class
+com\company\Service\ListadoGeneral.class

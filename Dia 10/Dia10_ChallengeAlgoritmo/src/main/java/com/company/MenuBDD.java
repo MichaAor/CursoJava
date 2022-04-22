@@ -1,5 +1,9 @@
 package com.company;
 
+import com.company.Service.ConsultarDatos;
+import com.company.Service.EliminarDatos;
+import com.company.Service.ListadoGeneral;
+import com.company.Service.RegistrarDatos;
 import com.mongodb.client.*;
 import org.bson.Document;
 
@@ -8,14 +12,9 @@ import java.util.Scanner;
 
 
 public class MenuBDD {
-    private MongoClient mongoClient = MongoClients.create();
-    private MongoDatabase mongoDatabase = mongoClient.getDatabase("challenge10");
-    private MongoCollection<Document> personasData = mongoDatabase.getCollection("Personas");
-
     public MenuBDD() {}
 
     public void mostrarMenu() throws InterruptedException {
-        Thread.sleep(1000);
         Scanner sc = new Scanner(System.in);
         char rta = 's';
         System.out.println("/---Challenge dia 10---/");
@@ -26,38 +25,33 @@ public class MenuBDD {
         }while(rta == 's');
     }
 
-    public void ejecutarEjercicios(){
+    public void ejecutarEjercicios() throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el num de la tarea que desea realizar ");
         System.out.println("1.Registrar Datos:  \n2.Consultar Datos: " +
-                "\n3.Eliminar Datos \n4.Listado General \n5.Modificar Datos");
+                "\n3.Eliminar Datos \n4.Listado General");
         switch (sc.nextInt()){
             case 1:
-                    RegistrarDatos.registrar(this.personasData);
+                    RegistrarDatos.registrar();
                 break;
             case 2:
                 sc = new Scanner(System.in);
                 System.out.println("Ingrese el dni de la persona a consultar: ");
-                    ConsultarDatos.consultar(this.personasData,sc.nextInt());
+                    ConsultarDatos.consultar(sc.nextInt());
                 break;
             case 3:
                 sc = new Scanner(System.in);
                 System.out.println("Ingrese el dni de la persona a eliminar: ");
-                EliminarDatos.eliminar(this.personasData,sc.nextInt());
+                EliminarDatos.eliminar(sc.nextInt());
                 break;
             case 4:
-                ListadoGeneral.listarCollection(this.personasData);
+                ListadoGeneral.listarCollection();
                 break;
-            case 5:
-                /*sc = new Scanner(System.in);
-                System.out.println("Ingrese el dni de la persona a MODIFICAR: ");
-                ModificarDatos.modificar(this.personasData,sc.nextInt());
-                */break;
             case 0:
                 System.exit(0);
                 break;
             default:
-                System.out.println("Opcion incorrecta: ");
+                System.err.println("Opcion incorrecta: ");
                 break;
         }
 

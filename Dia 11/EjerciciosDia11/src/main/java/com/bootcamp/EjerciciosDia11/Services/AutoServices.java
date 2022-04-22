@@ -3,11 +3,12 @@ package com.bootcamp.EjerciciosDia11.Services;
 import com.bootcamp.EjerciciosDia11.Models.Auto;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.ArrayList;
 
-
+@Service
 public class AutoServices {
     public static String registrarAuto(String modelo, String marca, String patente,
                                      float precio, int cantPuertas) throws IOException {
