@@ -44,7 +44,7 @@ public class UsuarioService {
             ArrayList<UsuarioModel> usuarios = leerUsuariosJSON();
             String rta = null;
             if(!usuarios.isEmpty()) {
-                rta = "\n----AUTOS--------\n";
+                rta = "\n----USUARIOS--------\n";
                 for(UsuarioModel usuario : usuarios){
                     rta += usuario.toString()+"\n";
                 }

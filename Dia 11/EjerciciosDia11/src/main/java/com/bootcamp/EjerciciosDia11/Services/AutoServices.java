@@ -42,43 +42,43 @@ public class AutoServices {
 
     public static String consultarTodos() throws IOException {
         ArrayList<Auto> autos = leerAutosJSON();
-        String rta = "\n----AUTOS--------\n";
+        String rta = "\n--------AUTOS--------\n";
         if(!autos.isEmpty()) {
             for(Auto auto : autos){
                    rta += auto.toString()+"\n";
                 }
             }else{
             rta += "\nNo hay autos registrados";
-        }
+            }
         return rta;
         }
 
-    public static String consultarAuto(String patente) throws IOException {
+    public static String consultarAutoXpatente(String patente) throws IOException {
         ArrayList<Auto> autos = leerAutosJSON();
         String rta = "No esta registrado ningun auto con esa patente";
         if(!autos.isEmpty()) {
-        for(Auto auto : autos){
-            if(auto.getPatente().compareTo(patente)==0){
-               rta = auto.toString();
-                break;
+            for(Auto auto : autos){
+                if(auto.getPatente().compareTo(patente)==0){
+                   rta = auto.toString();
+                    break;
+                    }
                 }
-            }
         }
         return rta;
     }
 
-    public static String borrarAuto(String patente) throws IOException {
+    public static String borrarAutoXpatente(String patente) throws IOException {
         ArrayList<Auto> autos = leerAutosJSON();
         String rta = "No esta registrado ningun auto con esa patente";
         if(!autos.isEmpty()) {
-        for(Auto auto : autos){
-            if(auto.getPatente().compareTo(patente)==0){
-                autos.remove(auto);
-                rta = "Se ha encontrado y borrado con exito el auto";
-                break;
+            for(Auto auto : autos){
+                if(auto.getPatente().compareTo(patente)==0){
+                    autos.remove(auto);
+                    rta = "Se ha encontrado y borrado con exito el auto";
+                    break;
+                    }
                 }
-            }
-            guardarAutosJSON(autos);
+                guardarAutosJSON(autos);
         }
         return rta;
     }

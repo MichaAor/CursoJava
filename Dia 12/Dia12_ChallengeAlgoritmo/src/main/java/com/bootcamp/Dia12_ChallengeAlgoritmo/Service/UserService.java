@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,9 +15,9 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public ResponseEntity<List<UserModel>> getAllUser(){
+    public ResponseEntity<ArrayList<UserModel>> getAllUser(){
         try {
-            List<UserModel> users = new ArrayList<UserModel>();
+            ArrayList<UserModel> users = new ArrayList<UserModel>();
             userRepository.findAll().forEach(users::add);
             if (users.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -32,6 +31,18 @@ public class UserService {
     public ResponseEntity<Optional<UserModel>>getUserByDni(String dni) {
         try {
             Optional<UserModel> user = userRepository.findById(dni);
+            if (user.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public ResponseEntity<ArrayList<UserModel>>getUserByName(String name) {
+        try {
+            ArrayList<UserModel> user = userRepository.getUsersByName(name);
             if (user.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }

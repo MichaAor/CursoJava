@@ -56,7 +56,7 @@ public class Auto {
         return "\nAuto: " +
                 "\nModelo: " + this.getModelo() +
                 "\nMarca: " + this.getMarca() +
-                "\nCantidad de Puertas=" + this.getCantPuertas() +
+                "\nCantidad de Puertas: " + this.getCantPuertas() +
                 "\nPatente: " + this.getPatente() +
                 "\nPrecio: " + this.getPrecio();
     }

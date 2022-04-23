@@ -7,8 +7,7 @@ import com.bootcamp.Dia11_ChallengeAlgoritmo.Service.UsuarioService.*;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static com.bootcamp.Dia11_ChallengeAlgoritmo.Service.UsuarioService.consultarUsuarios;
-import static com.bootcamp.Dia11_ChallengeAlgoritmo.Service.UsuarioService.registrarUsuario;
+import static com.bootcamp.Dia11_ChallengeAlgoritmo.Service.UsuarioService.*;
 
 @SpringBootApplication
 public class Dia11ChallengeAlgoritmoApplication {
@@ -22,10 +21,10 @@ public class Dia11ChallengeAlgoritmoApplication {
 		apellido = sc.nextLine();
 		System.out.println("Ingrese es su dni");
 		dni = sc.nextLine();
-		System.out.println(registrarUsuario(nombre,apellido,dni));
-		//System.out.println(consultarUsuarios());  /////////CAMBIAR AUTOS EN EL REGISTRO Y EMPEZAR DE NUEVO
-		//System.out.println(consultarAuto("AMC-445"));
-		//System.out.println(borrarAuto("AMC-445"));*/
+		System.out.println(registrarUsuario(nombre,apellido,dni));*/
+		//System.out.println(consultarUsuarios());
+		//System.out.println(consultarUsuarioXdni("35224668"));
+		//System.out.println(borrarUsuarioXdni("35224668"));
 		SpringApplication.run(Dia11ChallengeAlgoritmoApplication.class, args);
 	}
 

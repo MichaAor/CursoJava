@@ -1,33 +1,32 @@
 package com.bootcamp.EjerciciosDia11.Controllers;
 
+import com.bootcamp.EjerciciosDia11.Models.Auto;
 import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import static com.bootcamp.EjerciciosDia11.Services.AutoServices.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/autos")
 public class AutoController {
-    @GetMapping("/mostrar")
+    @GetMapping
     public String mostrarAutos() throws IOException {
         return consultarTodos();
     }
 
-    @GetMapping("/mostrar/{patente}")
+    @GetMapping("/{patente}")
     public String buscarPorPatente(@PathVariable("patente") String patente) throws IOException {
-        return consultarAuto(patente);
+        return consultarAutoXpatente(patente);
     }
 
 
-    @PostMapping("/create")
-    public String crearAuto(@PathVariable("modelo") String modelo,@PathVariable("marca") String marca,
-                            @PathVariable("patente") String patente,@PathVariable("precio") float precio,
-                            @PathVariable("cantPuertas") int cantPuertas ) throws IOException {
-        return registrarAuto(modelo, marca, patente, precio, cantPuertas);
+    @PostMapping
+    public String crearAuto(@RequestBody Auto auto) throws IOException {
+        return registrarAuto(auto.getModelo(), auto.getMarca(), auto.getPatente(), auto.getPrecio(), auto.getCantPuertas());
     }
 
-    @DeleteMapping("/delete/{patente}")
+    @DeleteMapping("/{patente}")
     public String borrarPorPatente(@PathVariable("patente") String patente) throws IOException {
-        return borrarAuto(patente);
+        return borrarAutoXpatente(patente);
     }
 
 }

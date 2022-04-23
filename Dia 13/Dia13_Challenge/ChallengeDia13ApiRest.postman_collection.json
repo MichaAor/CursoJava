@@ -72,6 +72,27 @@
 					]
 				},
 				{
+					"name": "MostrarUsuariosXNombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/user/{name}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"user",
+								"{name}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "CrearUsuario",
 					"request": {
 						"method": "POST",
