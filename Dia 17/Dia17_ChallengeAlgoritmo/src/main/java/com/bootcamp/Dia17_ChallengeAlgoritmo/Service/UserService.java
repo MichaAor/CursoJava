@@ -39,25 +39,13 @@ public class UserService{
         }
     }
 
-    public ResponseEntity<ArrayList<UserModel>> getUsersByName(String name) {
-        try {
-            ArrayList<UserModel> user = userRepository.getUsersByName(name);
-            if (user.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(user, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     public ResponseEntity<UserModel> registerUser(UserModel userBody) {
         try {
-            if(userRepository.findByEmail(userBody.getEmail()) != null){
+            if(userRepository.getUserByEmail(userBody.getEmail()) != null){
                 return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
             }
-            UserModel user = userRepository.save(userBody);
-            return new ResponseEntity<>(user, HttpStatus.OK);
+                userRepository.save(userBody);
+            return new ResponseEntity<>(userBody, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
         }

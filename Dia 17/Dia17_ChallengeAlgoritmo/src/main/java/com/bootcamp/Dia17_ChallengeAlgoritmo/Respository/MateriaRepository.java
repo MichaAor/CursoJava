@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MateriaRepository extends CrudRepository<MateriaModel,String> {
+    MateriaModel findMateriaByCodMateria(String codMateria);
 }

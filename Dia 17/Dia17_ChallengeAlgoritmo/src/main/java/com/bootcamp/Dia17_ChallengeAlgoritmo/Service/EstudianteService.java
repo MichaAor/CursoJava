@@ -5,10 +5,12 @@ import com.bootcamp.Dia17_ChallengeAlgoritmo.Respository.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
+@Service
 public class EstudianteService {
     @Autowired
     private EstudianteRepository estudianteRepository;
@@ -37,7 +39,7 @@ public class EstudianteService {
         }
     }
 
-    public ResponseEntity<ArrayList<EstudianteModel>> getEstudianteByName(String name) {
+    public ResponseEntity<ArrayList<EstudianteModel>> getEstudiantesByName(String name) {
         try {
             ArrayList<EstudianteModel> user = estudianteRepository.getEstudiantesByName(name);
             if (user.isEmpty()) {
@@ -49,13 +51,13 @@ public class EstudianteService {
         }
     }
 
-    public ResponseEntity<EstudianteModel> register(EstudianteModel estudianteModel) {
+    public ResponseEntity<EstudianteModel> registerEstudiante(EstudianteModel estudianteModel) {
         try {
-            if(estudianteRepository.findById(estudianteModel.getDni()) != null){
+            if(estudianteRepository.getEstudianteByDni(estudianteModel.getDni()) != null){
                 return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
             }
-            EstudianteModel estudiante = estudianteRepository.save(estudianteModel);
-            return new ResponseEntity<>(estudiante, HttpStatus.OK);
+             estudianteRepository.save(estudianteModel);
+            return new ResponseEntity<>(estudianteModel, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
         }

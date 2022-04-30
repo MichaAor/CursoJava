@@ -11,4 +11,5 @@ import java.util.Optional;
 @Repository
 public interface EstudianteRepository extends CrudRepository<EstudianteModel,String> {
     ArrayList<EstudianteModel> getEstudiantesByName(String name);
+    EstudianteModel getEstudianteByDni(String dni);
 }

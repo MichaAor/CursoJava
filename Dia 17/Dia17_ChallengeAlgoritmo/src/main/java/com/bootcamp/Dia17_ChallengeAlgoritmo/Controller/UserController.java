@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
-@Api(value = "Controller Users")
+//@Api(value = "Controller Users")
 public class UserController {
     @Autowired
     UserService userService;
@@ -31,12 +31,9 @@ public class UserController {
         return userService.getUserByEmail(email);
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<ArrayList<UserModel>> getUsersByname(@PathVariable("name") String name) {
-        if(name == null){
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }
-        return userService.getUsersByName(name);
+    @PostMapping("/user")
+    public ResponseEntity<UserModel> registerUser(@RequestBody UserModel userBody) {
+        return userService.registerUser(userBody);
     }
 
     @PutMapping("/user")
