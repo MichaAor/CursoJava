@@ -47,7 +47,7 @@ public class EstudianteController {
         return estudianteService.registerEstudiante(estudianteModel);
     }
 
-    @DeleteMapping("/{dni}")
+    @DeleteMapping("/estudiante/{dni}")
     public ResponseEntity deleteEstudiante(@PathVariable("dni") String dni){
         if(dni == null){
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);

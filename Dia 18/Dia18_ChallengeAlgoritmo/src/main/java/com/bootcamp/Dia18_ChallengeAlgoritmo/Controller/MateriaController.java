@@ -1,8 +1,7 @@
-package com.bootcamp.Dia17_ChallengeAlgoritmo.Controller;
+package com.bootcamp.Dia18_ChallengeAlgoritmo.Controller;
 
-import com.bootcamp.Dia17_ChallengeAlgoritmo.Model.MateriaModel;
-import com.bootcamp.Dia17_ChallengeAlgoritmo.Service.MateriaService;
-import io.swagger.annotations.Api;
+import com.bootcamp.Dia18_ChallengeAlgoritmo.Controller.Service.MateriaService;
+import com.bootcamp.Dia18_ChallengeAlgoritmo.Model.Materia;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,18 +12,17 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/materias")
-@Api(value = "Controller Materias")
 public class MateriaController {
     @Autowired
     MateriaService materiaService;
 
     @GetMapping
-    public ResponseEntity<ArrayList<MateriaModel>> getAllMaterias() {
+    public ResponseEntity<ArrayList<Materia>> getAllMaterias() {
             return materiaService.getAllMaterias();
     }
 
     @GetMapping("/materia/{codMateria}")
-    public ResponseEntity<Optional<MateriaModel>> getMateriaByCode(@PathVariable("codMateria") String codMateria) {
+    public ResponseEntity<Optional<Materia>> getMateriaByCode(@PathVariable("codMateria") String codMateria) {
         if(codMateria == null){
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
@@ -33,12 +31,12 @@ public class MateriaController {
 
 
     @PostMapping("/materia")
-    public ResponseEntity<MateriaModel> registerMateria(@RequestBody MateriaModel materiaBody) {
+    public ResponseEntity<Materia> registerMateria(@RequestBody Materia materiaBody) {
         return materiaService.registerMateria(materiaBody);
     }
 
     @PutMapping("/materia")
-    public ResponseEntity<MateriaModel> modifyMateria(@RequestBody MateriaModel materiaBody) {
+    public ResponseEntity<Materia> modifyMateria(@RequestBody Materia materiaBody) {
         return materiaService.registerMateria(materiaBody);
     }
 

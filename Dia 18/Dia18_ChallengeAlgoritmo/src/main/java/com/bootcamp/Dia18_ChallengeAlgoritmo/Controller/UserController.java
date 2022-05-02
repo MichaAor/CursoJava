@@ -1,8 +1,7 @@
-package com.bootcamp.Dia17_ChallengeAlgoritmo.Controller;
+package com.bootcamp.Dia18_ChallengeAlgoritmo.Controller;
 
-import com.bootcamp.Dia17_ChallengeAlgoritmo.Model.UserModel;
-import com.bootcamp.Dia17_ChallengeAlgoritmo.Service.UserService;
-import io.swagger.annotations.Api;
+import com.bootcamp.Dia18_ChallengeAlgoritmo.Controller.Service.UserService;
+import com.bootcamp.Dia18_ChallengeAlgoritmo.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,12 +18,12 @@ public class UserController {
     UserService userService;
 
     @GetMapping
-    public ResponseEntity<ArrayList<UserModel>> getAllUsers() {
+    public ResponseEntity<ArrayList<User>> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @GetMapping("/user/{email}")
-    public ResponseEntity<Optional<UserModel>> getUserByEmail(@PathVariable("email") String email) {
+    public ResponseEntity<Optional<User>> getUserByEmail(@PathVariable("email") String email) {
         if(email == null){
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
@@ -32,12 +31,12 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public ResponseEntity<UserModel> registerUser(@RequestBody UserModel userBody) {
+    public ResponseEntity<User> registerUser(@RequestBody User userBody) {
         return userService.registerUser(userBody);
     }
 
     @PutMapping("/user")
-    public ResponseEntity<UserModel> modifyUser(@RequestBody UserModel userBody) {
+    public ResponseEntity<User> modifyUser(@RequestBody User userBody) {
         return userService.registerUser(userBody);
     }
 

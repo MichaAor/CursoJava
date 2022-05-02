@@ -33,7 +33,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/users/user/{Email}",
+							"raw": "http://localhost:8080/users/user/{email}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -42,7 +42,7 @@
 							"path": [
 								"users",
 								"user",
-								"{Email}"
+								"{email}"
 							]
 						}
 					},
@@ -89,7 +89,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/users/{email}",
+							"raw": "http://localhost:8080/users/user/{email}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -97,6 +97,7 @@
 							"port": "8080",
 							"path": [
 								"users",
+								"user",
 								"{email}"
 							]
 						}
@@ -134,7 +135,36 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"aleja1234@gmail.com\",\r\n    \"username\": \"alejandro147\",\r\n    \"password\": \"45612379\"\r\n}",
+							"raw": "{\r\n    \"email\": \"@gmail.com\",\r\n    \"username\": \"\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ModificarUsuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"@gmail.com\",\r\n    \"username\": \"\",\r\n    \"password\": \"\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -262,7 +292,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/estudiantes/{dni}",
+							"raw": "http://localhost:8080/estudiantes/estudiante/{dni}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -270,6 +300,7 @@
 							"port": "8080",
 							"path": [
 								"estudiantes",
+								"estudiante",
 								"{dni}"
 							]
 						}
@@ -304,6 +335,35 @@
 					"name": "CrearEstudiante",
 					"request": {
 						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": \"\",\r\n    \"name\": \"\",\r\n    \"surname\": \"\",\r\n    \"phone\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/estudiantes/estudiante",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estudiantes",
+								"estudiante"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ModificarEstudiante",
+					"request": {
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -415,7 +475,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/materias/1",
+							"raw": "http://localhost:8080/materias/materia/{codMateria}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -423,7 +483,8 @@
 							"port": "8080",
 							"path": [
 								"materias",
-								"1"
+								"materia",
+								"{codMateria}"
 							]
 						}
 					},
@@ -460,7 +521,36 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"codMateria\": \"1\",\r\n    \"nombre\": \"Matematicas\"\r\n}",
+							"raw": "{\r\n    \"codMateria\": \"\",\r\n    \"nombre\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/materias/materia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"materias",
+								"materia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ModificarMateria",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codMateria\": \"\",\r\n    \"nombre\": \"\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

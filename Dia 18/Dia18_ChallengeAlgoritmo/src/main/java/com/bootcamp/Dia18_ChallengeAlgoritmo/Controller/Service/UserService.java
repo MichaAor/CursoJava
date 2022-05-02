@@ -1,7 +1,7 @@
-package com.bootcamp.Dia17_ChallengeAlgoritmo.Service;
+package com.bootcamp.Dia18_ChallengeAlgoritmo.Controller.Service;
 
-import com.bootcamp.Dia17_ChallengeAlgoritmo.Model.UserModel;
-import com.bootcamp.Dia17_ChallengeAlgoritmo.Respository.UserRepository;
+import com.bootcamp.Dia18_ChallengeAlgoritmo.Controller.Respository.UserRepository;
+import com.bootcamp.Dia18_ChallengeAlgoritmo.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +15,9 @@ public class UserService{
     @Autowired
     private UserRepository userRepository;
 
-    public ResponseEntity<ArrayList<UserModel>> getAllUsers(){
+    public ResponseEntity<ArrayList<User>> getAllUsers(){
         try {
-            ArrayList<UserModel> users = new ArrayList<UserModel>();
+            ArrayList<User> users = new ArrayList<User>();
             userRepository.findAll().forEach(users::add);
             if (users.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -28,9 +28,9 @@ public class UserService{
         }
     }
 
-    public ResponseEntity<Optional<UserModel>>getUserByEmail(String email) {
+    public ResponseEntity<Optional<User>>getUserByEmail(String email) {
         try {
-            Optional<UserModel> user = userRepository.getUserByEmail(email);
+            Optional<User> user = userRepository.getUserByEmail(email);
             if (user.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -40,7 +40,7 @@ public class UserService{
         }
     }
 
-    public ResponseEntity<UserModel> registerUser(UserModel userBody) {
+    public ResponseEntity<User> registerUser(User userBody) {
         try {
             if(userRepository.findByEmail(userBody.getEmail()) != null){
                 return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
@@ -55,7 +55,7 @@ public class UserService{
     public ResponseEntity deleteUserByEmail(String email) {
         try {
             userRepository.deleteById(email);
-            Optional<UserModel> user = userRepository.findById(email);
+            Optional<User> user = userRepository.findById(email);
             if (!user.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

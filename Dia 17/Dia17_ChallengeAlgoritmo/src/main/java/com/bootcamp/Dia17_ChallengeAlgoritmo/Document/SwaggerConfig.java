@@ -20,7 +20,7 @@ public class SwaggerConfig {
     public Docket apiDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.Bootcamp.Dia17_ChallengeAlgoritmo"))
+                .apis(RequestHandlerSelectors.basePackage("com.bootcamp.Dia17_ChallengeAlgoritmo"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(getApiInfo());

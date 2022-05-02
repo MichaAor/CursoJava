@@ -1,7 +1,8 @@
-package com.bootcamp.Dia17_ChallengeAlgoritmo.Service;
+package com.bootcamp.Dia18_ChallengeAlgoritmo.Controller.Service;
 
-import com.bootcamp.Dia17_ChallengeAlgoritmo.Model.MateriaModel;
-import com.bootcamp.Dia17_ChallengeAlgoritmo.Respository.MateriaRepository;
+import com.bootcamp.Dia18_ChallengeAlgoritmo.Controller.Respository.MateriaRepository;
+import com.bootcamp.Dia18_ChallengeAlgoritmo.Model.Materia;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +16,9 @@ public class MateriaService {
     @Autowired
     private MateriaRepository materiaRepository;
 
-    public ResponseEntity<ArrayList<MateriaModel>> getAllMaterias(){
+    public ResponseEntity<ArrayList<Materia>> getAllMaterias(){
         try {
-            ArrayList<MateriaModel> materias = new ArrayList<MateriaModel>();
+            ArrayList<Materia> materias = new ArrayList<Materia>();
             materiaRepository.findAll().forEach(materias::add);
             if (materias.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -28,9 +29,9 @@ public class MateriaService {
         }
     }
 
-    public ResponseEntity<Optional<MateriaModel>>getMateriaByCod(String codMateria) {
+    public ResponseEntity<Optional<Materia>>getMateriaByCod(String codMateria) {
         try {
-            Optional<MateriaModel> materias = materiaRepository.findById(codMateria);
+            Optional<Materia> materias = materiaRepository.findById(codMateria);
             if (materias.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -42,7 +43,7 @@ public class MateriaService {
 
 
 
-    public ResponseEntity<MateriaModel> registerMateria(MateriaModel materia) {
+    public ResponseEntity<Materia> registerMateria(Materia materia) {
         try {
             if(materiaRepository.findMateriaByCodMateria(materia.getCodMateria()) != null){
                 return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
@@ -57,7 +58,7 @@ public class MateriaService {
     public ResponseEntity deleteMateria(String codMateria) {
         try {
             materiaRepository.deleteById(codMateria);
-            Optional<MateriaModel> materia = materiaRepository.findById(codMateria);
+            Optional<Materia> materia = materiaRepository.findById(codMateria);
             if (!materia.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

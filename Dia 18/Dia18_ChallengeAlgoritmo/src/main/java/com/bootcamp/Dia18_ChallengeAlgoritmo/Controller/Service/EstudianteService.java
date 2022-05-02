@@ -1,7 +1,7 @@
-package com.bootcamp.Dia17_ChallengeAlgoritmo.Service;
+package com.bootcamp.Dia18_ChallengeAlgoritmo.Controller.Service;
 
-import com.bootcamp.Dia17_ChallengeAlgoritmo.Model.EstudianteModel;
-import com.bootcamp.Dia17_ChallengeAlgoritmo.Respository.EstudianteRepository;
+import com.bootcamp.Dia18_ChallengeAlgoritmo.Controller.Respository.EstudianteRepository;
+import com.bootcamp.Dia18_ChallengeAlgoritmo.Model.Estudiante;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,22 +15,22 @@ public class EstudianteService {
     @Autowired
     private EstudianteRepository estudianteRepository;
 
-    public ResponseEntity<ArrayList<EstudianteModel>> getAllEstudiantes(){
+    public ArrayList<Estudiante> getAllEstudiantes(){
         try {
-            ArrayList<EstudianteModel> estudiantes = new ArrayList<EstudianteModel>();
+            ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
             estudianteRepository.findAll().forEach(estudiantes::add);
             if (estudiantes.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                return null;
             }
-            return new ResponseEntity<>(estudiantes, HttpStatus.OK);
+            return estudiantes;
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ArrayList<Estudiante>();
         }
     }
 
-    public ResponseEntity<Optional<EstudianteModel>>getEstudianteByDni(String dni) {
+    public ResponseEntity<Optional<Estudiante>>getEstudianteByDni(String dni) {
         try {
-            Optional<EstudianteModel> user = estudianteRepository.findById(dni);
+            Optional<Estudiante> user = estudianteRepository.findById(dni);
             if (user.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -40,9 +40,9 @@ public class EstudianteService {
         }
     }
 
-    public ResponseEntity<ArrayList<EstudianteModel>> getEstudiantesByName(String name) {
+    public ResponseEntity<ArrayList<Estudiante>> getEstudiantesByName(String name) {
         try {
-            ArrayList<EstudianteModel> user = estudianteRepository.getEstudiantesByName(name);
+            ArrayList<Estudiante> user = estudianteRepository.getEstudiantesByName(name);
             if (user.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -52,22 +52,22 @@ public class EstudianteService {
         }
     }
 
-    public ResponseEntity<EstudianteModel> registerEstudiante(EstudianteModel estudianteModel) {
+    public Estudiante registerEstudiante(Estudiante estudiante) {
         try {
-            if(estudianteRepository.getEstudianteByDni(estudianteModel.getDni()) != null){
-                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            if(estudianteRepository.getEstudianteByDni(estudiante.getDni()) != null){
+                return null;
             }
-             estudianteRepository.save(estudianteModel);
-            return new ResponseEntity<>(estudianteModel, HttpStatus.OK);
+             estudianteRepository.save(estudiante);
+            return estudiante;
         } catch (Exception e) {
-            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+            return null;
         }
     }
 
     public ResponseEntity deleteEstudiante(String dni) {
         try {
             estudianteRepository.deleteById(dni);
-            Optional<EstudianteModel> user = estudianteRepository.findById(dni);
+            Optional<Estudiante> user = estudianteRepository.findById(dni);
             if (!user.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

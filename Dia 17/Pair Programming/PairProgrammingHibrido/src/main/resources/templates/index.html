@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+
+<body>
+
+    <h1>Aguante bocaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+ <div th:each="book: ${books}" style="margin:25px;">
+     <h3>Title: <span th:text="${book.getTitle()}"></span></h3>
+     <h4>Author: <span th:text="${book.getAuthor()}"></span></h4>
+     <h4>Desription: <span th:text="${book.getDescription()}"></span></h4>
+     <h4>Gender: <span th:text="${book.getGender()}"></span></h4>
+     <h4>Publisher: <span th:text="${book.getPublisher()}"></span></h4>
+     <h4>Isbn: <span th:text="${book.getIsbn()}"></span></h4>
+     <hr>
+ </div>
+
+</body>
+
+</html>
