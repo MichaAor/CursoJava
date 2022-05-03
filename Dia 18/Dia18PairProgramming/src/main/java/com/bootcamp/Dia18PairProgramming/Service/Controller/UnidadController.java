@@ -1,4 +1,4 @@
-package com.bootcamp.Dia18PairProgramming.Controller;
+package com.bootcamp.Dia18PairProgramming.Service.Controller;
 
 import com.bootcamp.Dia18PairProgramming.Model.Unidad;
 import com.bootcamp.Dia18PairProgramming.Service.UnidadesService;

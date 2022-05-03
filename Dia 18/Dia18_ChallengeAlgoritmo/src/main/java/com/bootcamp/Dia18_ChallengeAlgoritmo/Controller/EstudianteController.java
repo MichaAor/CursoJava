@@ -11,27 +11,58 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/estudiantes")
 //@Api(value = "Controller Estudiantes")
 public class EstudianteController {
     @Autowired
-    EstudianteService estudianteService;
+    EstudianteService es;
 
     @GetMapping
     public String getAllEstudiantes(Model model) {
-        model.addAttribute("estudiantes",estudianteService.getAllEstudiantes());
-        return "EstudienteTemplates/EstudianteIndex";
+        model.addAttribute("estudiantes", es.getAllEstudiantes());
+        return "EstudianteTemplates/EstudianteIndex";
     }
 
+    @GetMapping("/create")
+    public String showFormEstudiantes(Model model) {
+        Estudiante estudiante = new Estudiante();
+        model.addAttribute("estudiante",estudiante);
+        return "EstudianteTemplates/EstudianteCreate";
+    }
+
+    @PostMapping("/create")
+    public String registerEstudiante(@ModelAttribute("estudiante") Estudiante estudiante) {
+        es.registerEstudiante(estudiante);
+        return "redirect:/estudiantes";
+    }
+
+
+    @GetMapping("/update/{dni}")
+    public String modifyEstudiante(@PathVariable("dni") String dni, Model model) {
+        Estudiante estudiante = es.getEstudianteByDni(dni);
+        model.addAttribute("estudiante", estudiante);
+        return "EstudianteTemplates/EstudianteEdit";
+    }
+    @PostMapping("/update/{dni}")
+    public String modifyEstudiante(@ModelAttribute("estudiante") Estudiante estudiante,
+                                   @PathVariable("dni") String dni) {
+        es.modifyEstudiante(estudiante,dni);
+        return "redirect:/estudiantes";
+    }
+
+    @GetMapping("/delete/{dni}")
+    public String deleteEstudiante(@PathVariable("dni") String dni){
+       es.deleteEstudiante(dni);
+       return "redirect:/estudiantes";
+    }
+
+
+///////NO PROBADOS
     @GetMapping("/estudiante/{dni}")
-    public ResponseEntity<Optional<Estudiante>> getEstudianteByDni(@PathVariable("dni") String dni) {
-        if(dni == null){
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }
-        return estudianteService.getEstudianteByDni(dni);
+    public Estudiante getEstudianteByDni(@PathVariable("dni") String dni) {
+        return es.getEstudianteByDni(dni);
     }
 
     @GetMapping("/{name}")
@@ -39,34 +70,6 @@ public class EstudianteController {
         if(name == null){
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
-        return estudianteService.getEstudiantesByName(name);
-    }
-
-    @GetMapping("/estudiante")
-    public String showFormEstudiantes(Model model) {
-        Estudiante estudiante = new Estudiante();
-        model.addAttribute("estudiante",estudiante);
-        return "EstudianteTemplates/EstudianteCreate";
-    }
-
-    @PostMapping("/estudiante")
-    public String registerEstudiante(@ModelAttribute("estudiante") Estudiante estudiante) {
-        estudianteService.registerEstudiante(estudiante);
-        return "redirect:/estudiantes";
-    }
-
-
-
-    @PutMapping("/estudiante")
-    public Estudiante modifyUser(@RequestBody Estudiante estudiante) {
-        return estudianteService.registerEstudiante(estudiante);
-    }
-
-    @DeleteMapping("/estudiante/{dni}")
-    public ResponseEntity deleteEstudiante(@PathVariable("dni") String dni){
-        if(dni == null){
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }
-        return estudianteService.deleteEstudiante(dni);
+        return es.getEstudiantesByName(name);
     }
 }

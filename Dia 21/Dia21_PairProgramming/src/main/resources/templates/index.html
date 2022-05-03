@@ -1,0 +1,105 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<style type="text/css">
+	body, html{
+		width:250px;
+	}
+
+	input:not([type="checkbox"]):not([type="radio"]),select{
+		width:160px;
+	}
+	input:not([type="radio"]), select{
+		margin-bottom:15px;
+	}
+	
+	.button{
+		width:200px !important;
+	}
+	
+</style>
+</head>
+<body>
+	<span>Ticket</span>
+	<!--
+	<form th:action="@{/tickets/create}" th:object="${ticket}" method="POST" id="userForm">
+		  <div style="border: 1px solid black; padding:20px;">
+		<span th:if="${ticket.numTicket !=null}"><input type="text" th:field="${ticket.numTicket}" readonly><br/></span>
+		
+		<label th:text="numTicket"></label><br/>
+		<input type="text" placeholder="numTicket" th:field="${ticket.numTicket}"/><br/>
+		
+		<label th:text="Local"></label><br/>
+		<input type="text" placeholder="local" th:field="${ticket.local}"/><br/>
+		
+		<label th:text="Date"></label><br/>
+		<input type="date" th:field="${ticket.date}"/><br/>
+		
+		<label th:text="Product"></label><br/>
+		<select th:field="${Product}" multiple="multiple">
+			<option th:each="product:${product}" th:value="${product.codProd}" th:text="${product.price}">
+			</option>
+		</select>
+		<br/>
+		<input type="Submit" th:class="button"/>
+		<th:block th:if="${ticket.numTicket !=null}">
+			<a th:href="@{/index}">Cancel</a>	
+		</th:block>
+		  </div>
+	</form>
+-->
+	<form th:action="@{/tickets/create}" th:object="${ticket}" method="post">
+		<label>Ticket Number: </label>
+		<input type="text" name="numTicket" th:field="*{numTicket}">
+		<br>
+		<label>Local: </label>
+		<input type="text" name="local" th:field="*{local}">
+		<br>
+		<label>Date: </label>
+		<input type="date" name="date" th:field="*{date}">
+		<br>
+		<label>Products</label><br/>
+		<select th:field="${ticket.products}" multiple="multiple">
+			<option th:each="product:*{products}" th:value="*{product.codProd}" th:text="*{product.name}">
+			</option>
+		</select>
+		<br>
+		<label>Total: </label>
+		<input type="number" name="total" th:field="*{total}">
+		<br>
+		<button type="submit">Create Client</button>
+		<br>
+	</form>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>TicketNumber</th>
+				<th>Local</th>
+				<th>Date</th>
+				<th>Total</th>
+				<th>Products</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="ticket : ${ticket}">
+				<td th:text="${ticket.numTicket}"></td>
+				<td th:text="${ticket.local}"></td>
+				<td th:text="${ticket.date}"></td>
+				<td th:text="${ticket.total}"></td>
+				<td>
+					<th:block th:each="product: ${ticket.products}">
+    					<label th:text="${product.codProd}"></label>
+    					<label th:text="${product.name}"></label>
+    					<label th:text="${product.description}"></label>
+    					<label th:text="${product.type}"></label>
+    					<label th:text="${product.price}"></label>
+  					</th:block>
+				</td>
+				</tr>
+				<button class="btn btn-dark" > <a th:href="@{ticket/update/{numTicket} (numTicket = ${ticket.numTicket})}"> Edit </a> </button>
+				<button class="btn btn-dark" > <a th:href="@{ticket/delete/{numTicket} (numTicket = ${ticket.numTicket})}"> Delete </a> </button>
+				</td>
+		</tbody>
+	</table>
+</body>
+</html>

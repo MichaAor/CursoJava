@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Estudiantes</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class ="container">
+    <form th:acction="@{estudiantes/update/{dni}(dni = estudiante.getDni)}" th:object="${estudiante}" method="post">
+        <label>Dni: </label>
+        <input name="dni" th:field="*{dni}" />
+        <br>
+        <label>Name: </label>
+        <input type="text" name="name" th:field="*{name}"/>
+        <br>
+        <label>Surname: </label>
+        <input type="text" name="surname" th:field="*{surname}"/>
+        <br>
+        <label>Phone: </label>
+        <input type="text" name="phone" th:field="*{phone}"/>
+        <button type="submit">Update Estudiante</button>
+        <br>
+    </form>
+    <a th:href="@{/estudiantes}">Go back</a>
+</div>
+</body>
+</html>

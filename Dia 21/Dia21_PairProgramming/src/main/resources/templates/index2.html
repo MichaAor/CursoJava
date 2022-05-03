@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+</head>
+<body class = "bg-dark">
+<br> <br>
+<div class = "container">
+    <button class="btn btn-dark" > <a th:href="@{/products/create}"> Create Product</a></button>
+    <table class ="table table-hover">
+        <thead>
+        <tr>
+            <th> Codprod </th>
+            <th> Name </th>
+            <th> Description </th>
+            <th> Type </th>
+            <th> Price </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product: ${products}">
+            <td th:text = ${product.getCodProd}></td>
+            <td th:text = ${product.getName}></td>
+            <td th:text = ${product.getDescription}></td>
+            <td th:text = ${product.getType}></td>
+            <td th:text = ${product.getPrice}></td>
+            <td>
+                <button class="btn btn-dark" > <a th:href="@{products/update/{codProd} (codProd = ${product.getCodProd})}"> Edit </a> </button>
+                <button class="btn btn-dark" > <a th:href="@{products/delete/{codProd} (codProd = ${product.getCodProd})} "> Delete </a> </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
     </head>
     <body>
-        <form th:action="@{/estudiantes/estudiante}" th:object="estudiante" method="post">
+        <form th:action="@{create}" th:object="${estudiante}" method="post">
             <label>Dni: </label>
             <input type="text" name="dni" th:field="*{dni}">
             <br>
