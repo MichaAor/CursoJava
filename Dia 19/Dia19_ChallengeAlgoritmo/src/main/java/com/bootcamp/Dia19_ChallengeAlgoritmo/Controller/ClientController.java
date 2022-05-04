@@ -3,6 +3,7 @@ package com.bootcamp.Dia19_ChallengeAlgoritmo.Controller;
 import com.bootcamp.Dia19_ChallengeAlgoritmo.Controller.Service.ClientService;
 import com.bootcamp.Dia19_ChallengeAlgoritmo.Model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -49,6 +50,12 @@ public class ClientController {
     public String deleteClient(@PathVariable("dni") String dni){
         cs.deleteClient(dni);
         return "redirect:/clients";
+    }
+
+    @GetMapping("/client/{dni}")
+    public String getClientByDni(@PathVariable("dni")String dni,Model model){
+        model.addAttribute("client",dni);
+        return
     }
 
 }

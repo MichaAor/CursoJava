@@ -16,6 +16,10 @@ public class ClientService {
         return (ArrayList<Client>) cr.findAll();
     }
 
+    public ArrayList<Client> getClientsByName(String name){
+        return cr.getClientsByNames(name);
+    }
+
     public Client getClientByDni(String dni){
         return cr.getClientByDni(dni);
     }

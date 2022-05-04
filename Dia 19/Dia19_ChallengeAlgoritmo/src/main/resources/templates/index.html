@@ -8,33 +8,10 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 </head>
 <body class = "bg-dark">
+    <section th:insert="Nav::nav"></section>
 <br> <br>
-<div class = "container">
-    <button class="btn btn-dark" > <a th:href="@{/clients/create}"> Create Client</a></button>
-    <table class ="table table-hover">
-        <thead>
-        <tr>
-            <th> Dni </th>
-            <th> Name </th>
-            <th> Surname </th>
-            <th> Phone </th>
-            <th> Address </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="client: ${clients}">
-            <td th:text = ${client.getDni}></td>
-            <td th:text = ${client.getName}></td>
-            <td th:text = ${client.getSurname}></td>
-            <td th:text = ${client.getPhone}></td>
-            <td th:text = ${client.getAddress}></td>
-            <td>
-                <button class="btn btn-dark" > <a th:href="@{clients/update/{dni} (dni = ${client.getDni})}"> Edit </a> </button>
-                <button class="btn btn-dark" > <a th:href="@{clients/delete/{dni} (dni = ${client.getDni})} "> Delete </a> </button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+
+    <section th:insert="View:view"></section>
+
 </body>
 </html>
