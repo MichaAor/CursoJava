@@ -17,6 +17,6 @@ import javax.persistence.Table;
 @Table(name = "materias")
 public class Materia {
     @Id
-    private String codMateria;
+    private String codMat;
     private String nombre;
 }

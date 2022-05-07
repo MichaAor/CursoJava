@@ -4,8 +4,6 @@ import com.bootcamp.Dia18_ChallengeAlgoritmo.Controller.Service.EstudianteServic
 import com.bootcamp.Dia18_ChallengeAlgoritmo.Model.Estudiante;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -59,17 +57,20 @@ public class EstudianteController {
     }
 
 
-///////NO PROBADOS
-    @GetMapping("/estudiante/{dni}")
-    public Estudiante getEstudianteByDni(@PathVariable("dni") String dni) {
-        return es.getEstudianteByDni(dni);
+    @GetMapping("/find")
+    public String getEstudianteByDni(@RequestParam("dni") String dni, Model model) {
+        model.addAttribute("estudiantes",es.getEstudianteByDni(dni));
+        return "EstudianteTemplates/EstudianteIndex";
     }
 
+
+
+    /*
     @GetMapping("/{name}")
     public ResponseEntity<ArrayList<Estudiante>> getEstudiantesByName(@PathVariable("name") String name) {
         if(name == null){
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
         return es.getEstudiantesByName(name);
-    }
+    }*/
 }

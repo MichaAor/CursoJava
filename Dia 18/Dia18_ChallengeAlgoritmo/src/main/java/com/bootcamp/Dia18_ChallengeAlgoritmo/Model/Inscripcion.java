@@ -14,5 +14,5 @@ import javax.persistence.Table;
 @Table(name = "incripciones")
 public class Inscripcion {
     private String dni;
-    private String codMateria;
+    private String codMat;
 }

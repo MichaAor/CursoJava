@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Crear un Estudiante</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    </head>
+    <body>
+        <form th:action="@{/especialidades/create}" th:object="${especialidad}" method="post">
+            <label>Id: </label>
+            <input type="text" name="id" th:field="*{id}">
+            <br>
+            <label>Nombre: </label>
+            <input type="text" name="nombre" th:field="*{nombre}">
+            <br>
+            <label>Cantidad de Especialistas: </label>
+            <input type="number" name="cantEsp" th:field="*{cantEsp}">
+            <br>
+            <button type="submit">Crear Especialidad</button>
+            <br>
+        </form>
+        <a th:href="@{/especialidades}">Go back</a>
+    </body>
+
+</html>

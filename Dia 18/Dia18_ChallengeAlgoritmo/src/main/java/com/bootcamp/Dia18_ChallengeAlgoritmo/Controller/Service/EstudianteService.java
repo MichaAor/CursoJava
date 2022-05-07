@@ -8,24 +8,38 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Service
 public class EstudianteService {
     @Autowired
-    private EstudianteRepository estudianteRepository;
+    EstudianteRepository er;
 
     public ArrayList<Estudiante> getAllEstudiantes() {
-        return (ArrayList<Estudiante>) estudianteRepository.findAll();
+        return (ArrayList<Estudiante>) er.findAll();
     }
 
     public Estudiante getEstudianteByDni(String dni) {
-        return estudianteRepository.getEstudianteByDni(dni);
+        return er.getEstudianteByDni(dni);
     }
 
+
+    public void registerEstudiante(Estudiante estudiante) {
+        er.save(estudiante);
+    }
+
+    public void modifyEstudiante(Estudiante estudiante, String dni) {
+        estudiante.setDni(dni);
+        er.save(estudiante);
+    }
+
+    public void deleteEstudiante(String dni) {
+        er.deleteById(dni);
+    }
+
+        /*
     public ResponseEntity<ArrayList<Estudiante>> getEstudiantesByName(String name) {
         try {
-            ArrayList<Estudiante> user = estudianteRepository.getEstudiantesByName(name);
+            ArrayList<Estudiante> user = er.getEstudiantesByName(name);
             if (user.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -34,17 +48,5 @@ public class EstudianteService {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    public void registerEstudiante(Estudiante estudiante) {
-        estudianteRepository.save(estudiante);
-    }
-
-    public void modifyEstudiante(Estudiante estudiante, String dni) {
-        estudiante.setDni(dni);
-        estudianteRepository.save(estudiante);
-    }
-
-    public void deleteEstudiante(String dni) {
-        estudianteRepository.deleteById(dni);
-    }
+*/
 }

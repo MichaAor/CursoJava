@@ -9,5 +9,4 @@ import java.util.ArrayList;
 @Repository
 public interface ClientRepository extends MongoRepository<Client,String> {
     Client getClientByDni(String dni);
-    ArrayList<Client> getClientsByNames(String name);
 }

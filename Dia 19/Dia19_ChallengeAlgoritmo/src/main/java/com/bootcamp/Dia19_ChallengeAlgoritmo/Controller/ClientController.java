@@ -17,7 +17,13 @@ public class ClientController {
     @GetMapping
     public String getAllClients(Model model){
         model.addAttribute("clients",cs.getAllClients());
-        return "index";
+        return "clientIndex";
+    }
+
+    @GetMapping("/find")
+    public String getClientByDni(Model model,@RequestParam String dni){
+        model.addAttribute("clients",cs.getClientByDni(dni));
+        return "clientIndex";
     }
 
     @GetMapping("/create")
@@ -52,10 +58,10 @@ public class ClientController {
         return "redirect:/clients";
     }
 
-    @GetMapping("/client/{dni}")
-    public String getClientByDni(@PathVariable("dni")String dni,Model model){
-        model.addAttribute("client",dni);
-        return
-    }
+
+
+    
+    
+    
 
 }

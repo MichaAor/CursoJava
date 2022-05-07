@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Estudiantes</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+</head>
+<body class = "bg-dark">
+    <br> <br>
+    <div class = "container">
+        <button class="btn btn-dark" > <a th:href="@{/especialidades/create}"> Create Client</a></button>
+        <table class ="table table-hover">
+            <thead>
+                <tr>
+                    <th> Id </th>
+                    <th> Nombre </th>
+                    <th> Cantidad de Especialistas </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="especialidad: ${especialidades}">
+                    <td th:text = ${especialidad.getId}></td>
+                    <td th:text = ${especialidad.getNombre}></td>
+                    <td th:text = ${especialidad.getCantEsp}></td>
+                    <td>
+                        <button class="btn btn-dark" > <a th:href="@{especialidades/update/{id} (id = ${especialidad.getId})}"> Edit </a> </button>
+                        <button class="btn btn-dark" > <a th:href="@{especialidades/delete/{id} (id = ${especialidad.getId})} "> Delete </a> </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -18,8 +18,8 @@ import javax.persistence.Table;
 public class Estudiante {
     @Id
     private String dni;
-    private String name;
-    private String surname;
-    private String phone;
+    private String nombre;
+    private String apellido;
+    private String telefono;
 
 }

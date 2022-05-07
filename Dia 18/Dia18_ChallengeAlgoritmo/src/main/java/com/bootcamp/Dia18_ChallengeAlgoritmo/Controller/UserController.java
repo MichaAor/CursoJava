@@ -3,48 +3,60 @@ package com.bootcamp.Dia18_ChallengeAlgoritmo.Controller;
 import com.bootcamp.Dia18_ChallengeAlgoritmo.Controller.Service.UserService;
 import com.bootcamp.Dia18_ChallengeAlgoritmo.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Optional;
-
-@RestController
+@Controller
 @RequestMapping("/users")
 //@Api(value = "Controller Users")
 public class UserController {
     @Autowired
-    UserService userService;
+    UserService us;
 
     @GetMapping
-    public ResponseEntity<ArrayList<User>> getAllUsers() {
-        return userService.getAllUsers();
+    public String getAllEstudiantes(Model model) {
+        model.addAttribute("users", us.getAllUser());
+        return "UserTemplates/UserIndex";
     }
 
-    @GetMapping("/user/{email}")
-    public ResponseEntity<Optional<User>> getUserByEmail(@PathVariable("email") String email) {
-        if(email == null){
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }
-        return userService.getUserByEmail(email);
+    @GetMapping("/create")
+    public String showFormUser(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "UserTemplates/UserCreate";
     }
 
-    @PostMapping("/user")
-    public ResponseEntity<User> registerUser(@RequestBody User userBody) {
-        return userService.registerUser(userBody);
+    @PostMapping("/create")
+    public String registerUser(@ModelAttribute("user") User user) {
+        us.registerUser(user);
+        return "redirect:/users";
     }
 
-    @PutMapping("/user")
-    public ResponseEntity<User> modifyUser(@RequestBody User userBody) {
-        return userService.registerUser(userBody);
+
+    @GetMapping("/update/{email}")
+    public String modifyUser(@PathVariable("email") String email, Model model) {
+        User user = us.getUserByEmail(email);
+        model.addAttribute("user", user);
+        return "UserTemplates/UserEdit";
+    }
+    @PostMapping("/update/{email}")
+    public String modifyUser(@ModelAttribute("user") User user,
+                                   @PathVariable("email") String email) {
+        us.modifyUser(user, email);
+        return "redirect:/users";
     }
 
-    @DeleteMapping("/user/{email}")
-    public ResponseEntity deleteUser(@PathVariable("email") String email){
-        if(email == null){
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }
-        return userService.deleteUserByEmail(email);
+    @GetMapping("/delete/{email}")
+    public String deleteUser(@PathVariable("email") String email){
+        us.deleteUser(email);
+        return "redirect:/users";
+    }
+
+
+    @GetMapping("/find")
+    public String getUserByEmail(@RequestParam("email") String email, Model model) {
+        model.addAttribute("users",us.getUserByEmail(email));
+        return "UserTemplates/UserIndex";
     }
 }

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f76412e7-65aa-4709-9c23-832a2ca28962" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/templates/UserTemplates/UserCreate.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/templates/UserTemplates/UserIndex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 19/Dia19_ChallengeAlgoritmo/src/main/resources/templates/clientIndex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22PairProgramming/src/main/java/com/bootcamp/Dia22PairProgramming/Controller/EspecialidadController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22PairProgramming/src/main/java/com/bootcamp/Dia22PairProgramming/Model/Especialidad.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22PairProgramming/src/main/resources/templates/EspecialidadCreate.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22PairProgramming/src/main/resources/templates/EspecialidadIndex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia22_ChallengeAlgoritmo/Controller/EstudianteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia22_ChallengeAlgoritmo/Controller/IncripcionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia22_ChallengeAlgoritmo/Controller/MateriaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia22_ChallengeAlgoritmo/Controller/Respository/EstudianteRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia22_ChallengeAlgoritmo/Controller/Respository/MateriaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia22_ChallengeAlgoritmo/Controller/Respository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia22_ChallengeAlgoritmo/Controller/Service/EstudianteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia22_ChallengeAlgoritmo/Controller/Service/MateriaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia22_ChallengeAlgoritmo/Controller/Service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia22_ChallengeAlgoritmo/Controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia22_ChallengeAlgoritmo/Model/Estudiante.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia22_ChallengeAlgoritmo/Model/Inscripcion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia22_ChallengeAlgoritmo/Model/Materia.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia22_ChallengeAlgoritmo/Model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/resources/templates/EstudianteTemplates/EstudianteCreate.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/resources/templates/EstudianteTemplates/EstudianteIndex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/resources/templates/UsuarioTemplates/UsuarioCreate.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/resources/templates/UsuarioTemplates/UsuarioIndex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 23/ApiDia23/src/main/java/com/bootcamp/ApiDia23/Controller/ClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 23/ApiDia23/src/main/java/com/bootcamp/ApiDia23/Controller/GenericController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 23/ApiDia23/src/main/java/com/bootcamp/ApiDia23/Controller/Repository/ClientRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 23/ApiDia23/src/main/java/com/bootcamp/ApiDia23/Controller/Service/ClientService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dia 23/ApiDia23/src/main/java/com/bootcamp/ApiDia23/Model/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/EstudianteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/EstudianteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/MateriaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/MateriaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/Respository/EstudianteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/Respository/EstudianteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/Respository/MateriaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/Respository/MateriaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/Respository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/Respository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/Service/EstudianteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/Service/EstudianteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/Service/MateriaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/Service/MateriaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/Service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Model/Estudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Model/Estudiante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Model/Inscripcion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Model/Inscripcion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Model/Materia.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Model/Materia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia18_ChallengeAlgoritmo/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/templates/EstudianteTemplates/EstudianteCreate.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/templates/EstudianteTemplates/EstudianteCreate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/templates/EstudianteTemplates/EstudianteEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/templates/EstudianteTemplates/EstudianteEdit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/templates/EstudianteTemplates/EstudianteIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/templates/EstudianteTemplates/EstudianteIndex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/templates/MateriaTemplates/MateriaCreate.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/templates/MateriaTemplates/MateriaCreate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/templates/MateriaTemplates/MateriaIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/templates/MateriaTemplates/MateriaIndex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/templates/UsuarioTemplates/UsuarioCreate.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/resources/templates/MateriaTemplates/MateriaCreate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 18/Dia18_ChallengeAlgoritmo/src/main/resources/templates/UsuarioTemplates/UsuarioIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/resources/templates/MateriaTemplates/MateriaIndex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 19/Dia19_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia19_ChallengeAlgoritmo/Controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 19/Dia19_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia19_ChallengeAlgoritmo/Controller/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 19/Dia19_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia19_ChallengeAlgoritmo/Controller/Repository/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 19/Dia19_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia19_ChallengeAlgoritmo/Controller/Repository/ClientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 19/Dia19_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia19_ChallengeAlgoritmo/Controller/Service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 19/Dia19_ChallengeAlgoritmo/src/main/java/com/bootcamp/Dia19_ChallengeAlgoritmo/Controller/Service/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 19/Dia19_ChallengeAlgoritmo/src/main/resources/templates/Nav.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 19/Dia19_ChallengeAlgoritmo/src/main/resources/templates/View.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 19/Dia19_ChallengeAlgoritmo/src/main/resources/templates/clientCreate.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 19/Dia19_ChallengeAlgoritmo/src/main/resources/templates/clientDni.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 19/Dia19_ChallengeAlgoritmo/src/main/resources/templates/clientUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Dia 22/Dia22_ChallengeAlgoritmo/src/main/resources/templates/EstudianteTemplates/EstudianteEdit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 19/Dia19_ChallengeAlgoritmo/src/main/resources/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dia 19/Dia19_ChallengeAlgoritmo/src/main/resources/templates/index3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dia20_ChallengeAlgoritmo/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Dia20_ChallengeAlgoritmo/src/main/resources/templates/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../../../Maven/apache-maven-3.8.4" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="28oUlPjQRlBx8vTy73HHj5RXkKv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Micha/Desktop/Devplace/1.Challenges/Dia 20/Dia20_ChallengeAlgoritmo"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f76412e7-65aa-4709-9c23-832a2ca28962" name="Changes" comment="" />
+      <created>1651882582344</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1651882582344</updated>
+    </task>
+    <servers />
+  </component>
+</project>

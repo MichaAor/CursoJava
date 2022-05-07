@@ -1,33 +1,69 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml%22%3E">
+<head>
+  <meta charset=" UTF-8">
+<title>Client Index</title>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+    }
+</style>
+</head>
 
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-	<head>
-		<title>Clientes</title>
-	</head>
-	<body>
-		<a th:href="@{/create}">Crear un Cliente</a>
-		<table>
-			<thead>
+<body style="max-width: 1400px; margin: 0 auto; padding-top: 75px;">
+
+<div class="container">
+	<div class="row">
+		<div style="margin: 0px 0px 20px 0px; padding:15px; border: 1px solid #c9c9c9; border-radius: 5px;"
+			 class="col-sm-2 text-center">
+			<h2>Menu</h2>
+			<form th:action="@{/clientes/find}">
+				<h6 style="padding: 15px 0px; font-size: 16px;">Filter by Dni:</h6>
+				<input style="width:100%; padding: 7px;" type="text" th:name="dni" placeholder="DNI:" />
+				<input style="margin: 10px 0px; padding: 7px; width:100%; cursor: pointer;" class="btn btn-dark"
+					   type="submit" value="Find" />
+			</form>
+			<a th:href="@{/clientes}"><button class="btn btn-dark"
+											 style="padding: 7px; width:100%; cursor: pointer;">View All
+				Clients</button></a>
+			<a th:href="@{/clientes/create}"><button
+					style="margin:10px 0px; width:100%; padding: 7px; cursor: pointer;" class="btn btn-dark">Create
+				an Client</button></a>
+			<br>
+		</div>
+		<div class="col-sm-10">
+			<table class="table table-hover">
+				<thead>
 				<tr>
-					<th>Dni</th>
-					<th>Nombre<th>
-					<th>Apellido</th>
-					<th>Email</th>
-					<th>Direccion</th>
+					<th class="text-center"> Dni </th>
+					<th class="text-center"> Nombre </th>
+					<th class="text-center"> Apellido </th>
+					<th class="text-center"> Email </th>
+					<th class="text-center"> Direccion </th>
+					<th class="text-center"> Avatar </th>
 				</tr>
-			</thead>
-			<tbody>
+				</thead>
+				<tbody style="text-align:center">
 				<tr th:each="cliente: ${clientes}">
-					<td th:text="${cliente.dni}"></td>
-					<td th:text="${cliente.nombre}"></td>
-					<td th:text="${cliente.apellido}"></td>
-					<td th:text="${cliente.email}"></td>
-					<td th:text="${cliente.direccion}"></td>
-					<td> 
-						<a th:href="@{/update/{dni}(dni = ${cliente.dni})}">Edit</a>
-					 | Delete</td>
+					<td th:text=${cliente.dni}></td>
+					<td th:text=${cliente.nombre}></td>
+					<td th:text=${cliente.apellido}></td>
+					<td th:text=${cliente.email}></td>
+					<td th:text=${cliente.direccion}></td>
+					<td th:text=${cliente.avatar}></td>
+					<td>
+						<a th:href="@{clientes/update/{dni} (dni = ${cliente.dni})}"><button class="btn btn-dark">
+							Update </button></a>
+						<a th:href="@{clientes/delete/{dni} (dni = ${cliente.dni})}"><button class="btn btn-dark">
+							Delete </button></a>
+					</td>
 				</tr>
-			</tbody>
-		</table>
-	</body>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
 </html>
