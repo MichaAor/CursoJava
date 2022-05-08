@@ -23,11 +23,27 @@ public class FileImgController{
     FilesStorageService storageService;
 
     @GetMapping
-    public String index() {
+    public String getListFiles(Model model) {
+        List<FileImg> files = storageService.loadAll().map(path -> {
+            String filename = path.getFileName().toString();
+            String url = MvcUriComponentsBuilder
+                    .fromMethodName(FileImgController.class, "getFile", path.getFileName().toString()).build().toString();
+            return new FileImg(filename, url);
+        }).collect(Collectors.toList());
+        model.addAttribute("files", files);
         return "fileIndex";
     }
 
+
     @PostMapping("/upload")
+    @GetMapping("/files/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> getFile(@PathVariable String filename) {
+        Resource file = storageService.load(filename);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+    }
+
     public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttrs) {
         String message = "";
         try {
@@ -46,23 +62,6 @@ public class FileImgController{
         }
     }
 
-    @GetMapping
-    public String getListFiles(Model model) {
-        List<FileImg> files = storageService.loadAll().map(path -> {
-            String filename = path.getFileName().toString();
-            String url = MvcUriComponentsBuilder
-                    .fromMethodName(FileImgController.class, "getFile", path.getFileName().toString()).build().toString();
-            return new FileImg(filename, url);
-        }).collect(Collectors.toList());
-        model.addAttribute("files", files);
-        return "redirect:/files";
-    }
 
-    @GetMapping("/files/{filename:.+}")
-    @ResponseBody
-    public ResponseEntity<Resource> getFile(@PathVariable String filename) {
-        Resource file = storageService.load(filename);
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
-    }
+
 }

@@ -1,6 +1,7 @@
 package com.bootcamp.Dia21_ChallengeAlgoritmo.Controller;
 
 import com.bootcamp.Dia21_ChallengeAlgoritmo.Controller.Service.ClienteService;
+import com.bootcamp.Dia21_ChallengeAlgoritmo.Controller.Service.FilesStorageService;
 import com.bootcamp.Dia21_ChallengeAlgoritmo.Model.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ import java.io.IOException;
 public class ClienteController {
     @Autowired
     ClienteService service;
+
+    @Autowired
+    FilesStorageService fss;
 
     @GetMapping
     public String getAllClientes(Model model) {
