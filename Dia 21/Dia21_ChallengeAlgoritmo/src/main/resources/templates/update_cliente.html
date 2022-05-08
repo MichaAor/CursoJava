@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Update unidad</title>
+	</head>
+	<body>
+		<form th:acction="@{/update/{dni}(dni = cliente.dni)}" th:object="${cliente}" method="post">
+			<label>Id: </label>
+			<input type="text" name="dni" th:field="*{dni}"/>
+			<br>
+			<label>Nombre: </label>
+			<input type="text" name="nombre" th:field="*{nombre}"/>
+			<br>
+			<label>Apellido: </label>
+			<input type="text" name="apellido" th:field="*{apellido}"/>
+			<br>
+			<label>Email: </label>
+			<input type="text" name="email" th:field="*{email}"/>
+			<br>
+			<label>Direccion: </label>
+			<input type="text" name="direccion" th:field="*{direccion}"/>
+			<button type="submit">
+				Update Cliente
+			</button>
+			<br>
+		</form>
+		<a th:href="@{/}">Go back</a>
+	</body>
+</html>

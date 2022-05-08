@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Crear un Cliente </title>
+	</head>
+	<body>
+		<form th:acction="@{/create}" th:object="${cliente}" method="post" enctype="multipart/form-data">
+			<label>Dni: </label>
+			<input type="text" name="dni" th:field="*{dni}"/>
+			<br>
+			<label>Nombre: </label>
+			<input type="text" name="nombre" th:field="*{nombre}"/>
+			<br>
+			<label>Apellido: </label>
+			<input type="text" name="apellido" th:field="*{apellido}"/>
+			<br>
+			<label>Email: </label>
+			<input type="text" name="email" th:field="*{email}"/>
+			<br>
+			<label>Direccion: </label>
+			<input type="text" name="direccion" th:field="*{direccion}"/>
+			<br>
+			<label class="form-label"> Avatar</label>
+			<input type="file" class="form-control" name="imagen"/>
+			<br><br>
+			<button type="submit">
+				Crear cliente
+			</button>
+			<br>
+		</form>
+		<a th:href="@{/clientes}">Go back</a>
+	</body>
+</html>

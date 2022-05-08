@@ -1,7 +1,7 @@
 package com.bootcamp.Dia21_ChallengeAlgoritmo.Controller;
 
-import com.bootcamp.Dia21_ChallengeAlgoritmo.Controller.Service.FileService;
-import com.bootcamp.Dia21_ChallengeAlgoritmo.Model.FileInfo;
+import com.bootcamp.Dia21_ChallengeAlgoritmo.Controller.Service.FilesStorageService;
+import com.bootcamp.Dia21_ChallengeAlgoritmo.Model.FileImg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -18,49 +18,50 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/files")
-public class FileController {
+public class FileImgController{
     @Autowired
-    FileService fs;
+    FilesStorageService storageService;
 
-    @GetMapping("/upload")
+    @GetMapping
     public String index() {
-        return "uploadFile";
+        return "fileIndex";
     }
 
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttrs) {
         String message = "";
         try {
-            fs.save(file);
+            storageService.save(file);
             message = "Archivo añadido " + file.getOriginalFilename();
             redirectAttrs
                     .addFlashAttribute("mensaje", message)
                     .addFlashAttribute("clase", "success");
-            return "redirect:/upload";
+            return "redirect:/files";
         } catch (Exception e) {
             message = "Error al cargar el archivo: " + file.getOriginalFilename() + "!";
             redirectAttrs
                     .addFlashAttribute("mensaje", message)
                     .addFlashAttribute("clase", "success");
-            return "redirect:/upload";
+            return "redirect:/files";
         }
     }
-    @GetMapping()
+
+    @GetMapping
     public String getListFiles(Model model) {
-        List<FileInfo> fileInfos = fs.loadAll().map(path -> {
+        List<FileImg> files = storageService.loadAll().map(path -> {
             String filename = path.getFileName().toString();
             String url = MvcUriComponentsBuilder
-                    .fromMethodName(FileController.class, "getFile", path.getFileName().toString()).build().toString();
-            return new FileInfo(filename, url);
+                    .fromMethodName(FileImgController.class, "getFile", path.getFileName().toString()).build().toString();
+            return new FileImg(filename, url);
         }).collect(Collectors.toList());
-        model.addAttribute("listfiles", fileInfos);
-        return "listFiles";
+        model.addAttribute("files", files);
+        return "redirect:/files";
     }
 
-    @GetMapping("/{filename:.+}")
+    @GetMapping("/files/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> getFile(@PathVariable String filename) {
-        Resource file = fs.load(filename);
+        Resource file = storageService.load(filename);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }

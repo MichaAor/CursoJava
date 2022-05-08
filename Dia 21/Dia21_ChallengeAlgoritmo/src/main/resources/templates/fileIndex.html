@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml%22%3E">
+<head>
+    <meta charset=" UTF-8">
+    <title>Files Index</title>
+    <style>
+    * {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+    }
+</style>
+</head>
+
+<body style="max-width: 1400px; margin: 0 auto; padding-top: 75px;">
+
+<div class="container">
+    <div class="row">
+        <div style="margin: 0px 0px 20px 0px; padding:15px; border: 1px solid #c9c9c9; border-radius: 5px;"
+             class="col-sm-2 text-center">
+            <h2>Menu Files</h2>
+            <h1>Seleccionar Archivo</h1>
+            <form method="POST" action="/files/update" enctype="multipart/form-data">
+                <input type="file" name="file" /><br/>
+                <input type="submit" value="Submit" />
+            </form>
+            <br/>
+            <a th:href="@{/files}"><button class="btn btn-dark"
+                                              style="padding: 7px; width:100%; cursor: pointer;">View All
+                Files</button></a>
+        </div>
+        <div class="col-sm-10">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">URL</th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center">
+                    <tr th:each="file: ${files}">
+                        <td th:text="${file.name}"></td>
+                        <td><a th:href="${file.url}" class="btn btn-primary">Descargar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
