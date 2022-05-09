@@ -1,7 +1,6 @@
 package com.bootcamp.Dia21_ChallengeAlgoritmo.Controller;
 
 import com.bootcamp.Dia21_ChallengeAlgoritmo.Controller.Service.ClienteService;
-import com.bootcamp.Dia21_ChallengeAlgoritmo.Controller.Service.FilesStorageService;
 import com.bootcamp.Dia21_ChallengeAlgoritmo.Model.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,16 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-
 @Controller
 @RequestMapping("/clientes")
 public class ClienteController {
     @Autowired
     ClienteService service;
 
-    @Autowired
-    FilesStorageService fss;
 
     @GetMapping
     public String getAllClientes(Model model) {
@@ -41,8 +36,8 @@ public class ClienteController {
 
     @PostMapping("/create")
     public String saveCliente(@ModelAttribute("cliente") Cliente cliente,
-                              @RequestParam("imagen") MultipartFile imagen) throws IOException {
-        service.registrarCliente(cliente,imagen);
+                              @RequestParam("file") MultipartFile file){
+        service.registrarCliente(cliente,file);
         return "redirect:/clientes";
     }
 
@@ -59,4 +54,10 @@ public class ClienteController {
         service.registrarCliente(cliente);
         return "redirect:/clientes";
     }*/
+
+    @GetMapping("delete/{dni}")
+    public String deleteCliente(@PathVariable("dni") String dni) {
+        service.borrarCliente(dni);
+        return "redirect:/clientes";
+    }
 }

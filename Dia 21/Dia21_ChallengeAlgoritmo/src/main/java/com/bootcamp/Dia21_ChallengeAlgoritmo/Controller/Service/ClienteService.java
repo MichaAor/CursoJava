@@ -7,13 +7,8 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 @Service
 public class ClienteService {
@@ -41,7 +36,6 @@ public class ClienteService {
         ArrayList<Cliente> clientes = (ArrayList<Cliente>) clienteRepository.findAll();
             clientes.forEach(datos->{
                 if(datos.getAvatar() != null ) {
-
                     String url="null";
                     try {
                         Resource fileData = fss.load(datos.getAvatar());
@@ -59,7 +53,6 @@ public class ClienteService {
     }
 
 
-
     public void registrarCliente(Cliente cliente, MultipartFile file) {
         String fileUrl=fss.saveUploads(file);
         cliente.setAvatar(fileUrl);
@@ -72,7 +65,7 @@ public class ClienteService {
         return "Modificado";
     }
 
-    public String borrarUnidad(String id){
+    public String borrarCliente(String id){
         clienteRepository.deleteById(id);
         return "Cliente Eliminada";
     }

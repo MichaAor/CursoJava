@@ -3,8 +3,6 @@ package com.bootcamp.Dia22_ChallengeAlgoritmo.Controller.Service;
 import com.bootcamp.Dia22_ChallengeAlgoritmo.Controller.Respository.EstudianteRepository;
 import com.bootcamp.Dia22_ChallengeAlgoritmo.Model.Estudiante;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,19 +10,34 @@ import java.util.ArrayList;
 @Service
 public class EstudianteService {
     @Autowired
-    private EstudianteRepository estudianteRepository;
+    EstudianteRepository er;
 
     public ArrayList<Estudiante> getAllEstudiantes() {
-        return (ArrayList<Estudiante>) estudianteRepository.findAll();
+        return (ArrayList<Estudiante>) er.findAll();
     }
 
-    public Estudiante getEstudianteByDni(String dni) {
-        return estudianteRepository.getEstudianteByDni(dni);
+    public Estudiante getEstudianteByDni(long dni) {
+        return er.getEstudianteByDni(dni);
     }
 
+
+    public void registerEstudiante(Estudiante estudiante) {
+        er.save(estudiante);
+    }
+
+    public void modifyEstudiante(Estudiante estudiante, long dni) {
+        estudiante.setDni(dni);
+        er.save(estudiante);
+    }
+
+    public void deleteEstudiante(long dni) {
+        er.deleteById(dni);
+    }
+
+        /*
     public ResponseEntity<ArrayList<Estudiante>> getEstudiantesByName(String name) {
         try {
-            ArrayList<Estudiante> user = estudianteRepository.getEstudiantesByName(name);
+            ArrayList<Estudiante> user = er.getEstudiantesByName(name);
             if (user.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -33,17 +46,5 @@ public class EstudianteService {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    public void registerEstudiante(Estudiante estudiante) {
-        estudianteRepository.save(estudiante);
-    }
-
-    public void modifyEstudiante(Estudiante estudiante, String dni) {
-        estudiante.setDni(dni);
-        estudianteRepository.save(estudiante);
-    }
-
-    public void deleteEstudiante(String dni) {
-        estudianteRepository.deleteById(dni);
-    }
+*/
 }

@@ -3,18 +3,38 @@ package com.bootcamp.Dia22_ChallengeAlgoritmo.Controller.Service;
 import com.bootcamp.Dia22_ChallengeAlgoritmo.Controller.Respository.UserRepository;
 import com.bootcamp.Dia22_ChallengeAlgoritmo.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Service
 public class UserService{
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository ur;
 
+    public ArrayList<User> getAllUser() {
+        return (ArrayList<User>) ur.findAll();
+    }
+
+    public User getUserByEmail(String email) {
+        return ur.getUserByEmail(email);
+    }
+
+
+    public void registerUser(User user) {
+        ur.save(user);
+    }
+
+    public void modifyUser(User user, String email) {
+        user.setEmail(email);
+        ur.save(user);
+    }
+
+    public void deleteUser(String email) {
+        ur.deleteById(email);
+    }
+
+    /*
     public ResponseEntity<ArrayList<User>> getAllUsers(){
         try {
             ArrayList<User> users = new ArrayList<User>();
@@ -42,7 +62,7 @@ public class UserService{
 
     public ResponseEntity<User> registerUser(User userBody) {
         try {
-            if(userRepository.findByEmail(userBody.getEmail()) != null){
+            if(userRepository.getUserByEmail(userBody.getEmail()) != null){
                 return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
             }
                 userRepository.save(userBody);
@@ -63,5 +83,7 @@ public class UserService{
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }
+    }*/
+
+
 }

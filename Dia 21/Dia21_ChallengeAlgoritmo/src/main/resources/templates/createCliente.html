@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>Crear un Cliente </title>
+		<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 	</head>
 	<body>
 		<form th:acction="@{/create}" th:object="${cliente}" method="post" enctype="multipart/form-data">
@@ -17,11 +18,15 @@
 			<label>Email: </label>
 			<input type="text" name="email" th:field="*{email}"/>
 			<br>
-			<label>Direccion: </label>
-			<input type="text" name="direccion" th:field="*{direccion}"/>
-			<br>
+			<div id="editor">
+				<label>Direccion: </label>
+				<textarea  name="direccion" th:field="*{direccion}"
+						   class="form-control"
+						   placeholder="Ingrese la direccion" ></textarea>
+				<br>
+			</div>
 			<label class="form-label"> Avatar</label>
-			<input type="file" class="form-control" name="imagen"/>
+			<input type="file" class="form-control" name="file"/>
 			<br><br>
 			<button type="submit">
 				Crear cliente
@@ -30,4 +35,10 @@
 		</form>
 		<a th:href="@{/clientes}">Go back</a>
 	</body>
+	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+		<script>
+	  		var quill = new Quill('#editor', {
+			theme: 'snow'
+	 		 });
+	</script>
 </html>

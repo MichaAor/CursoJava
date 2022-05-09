@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Inscripciones Index</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <form th:acction="@{/inscripciones/create}" th:object="${ir}" method="post">
+        <label>Codigo de Materia: </label>
+        <input class="form-control" type="number" th:field="*{codMat}"/>
+        <br>
+        <label>Dni de Estudiante: </label>
+        <input class="form-control" type="number" th:field="*{dniEst}"/>
+        <br>
+        <button class="btn btn-light" type="submit">
+            Inscribirse
+        </button>
+    </form>
+</div>
+
+<div class="container">
+    <h1>Materias</h1>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <td>Codigo de Materia</td>
+            <td>Nombre</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="materia: ${materias}">
+            <td th:text="${materia.codMat}"></td>
+            <td th:text="${materia.nombre}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <br><br>
+    <h1>Inscripciones</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Codigo de Materia</td>
+                <td>Dni de Estudiante</td>
+                <td>Acciones </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="inscripcion: ${inscripciones}">
+                <td th:text="${inscripcion.id}"></td>
+                <td th:text="${inscripcion.materia.codMat}"></td>
+                <td th:text="${inscripcion.estudiante.dni}"></td>
+                <td>
+                    <a th:href="@{/inscripciones/delete/{id}(id = ${inscripcion.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+
+
+
+
+<!--
+<body>
+<div class ="container">
+    <form th:acction="@{estudiantes/inscripcion/{dni}(dni = estudiante.getDni)}"
+          th:object="${inscripcion}" method="post">
+        <div class="form-group row">
+            <label>Materias: </label>
+            <select th:field="*{codMat}">
+                <option th:each="materia:${materias}}"
+                        th:value="${materia.codMat}}"
+                        th:name="${materia.nombre}}"
+                />
+            </select>
+        </div>
+        <button type="submit">Inscribir Estudiante</button>
+        <br>
+    </form>
+    <a th:href="@{/estudiantes}">Go back</a>
+</div>
+</body>
+ -->

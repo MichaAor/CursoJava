@@ -35,7 +35,6 @@ public class FileImgController{
     }
 
 
-    @PostMapping("/upload")
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> getFile(@PathVariable String filename) {
@@ -44,6 +43,7 @@ public class FileImgController{
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
+    @PostMapping
     public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttrs) {
         String message = "";
         try {

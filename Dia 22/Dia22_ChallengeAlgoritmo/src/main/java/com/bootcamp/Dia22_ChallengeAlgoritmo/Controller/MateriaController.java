@@ -3,48 +3,59 @@ package com.bootcamp.Dia22_ChallengeAlgoritmo.Controller;
 import com.bootcamp.Dia22_ChallengeAlgoritmo.Controller.Service.MateriaService;
 import com.bootcamp.Dia22_ChallengeAlgoritmo.Model.Materia;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Optional;
-
-@RestController
+@Controller
 @RequestMapping("/materias")
 public class MateriaController {
     @Autowired
-    MateriaService materiaService;
+    MateriaService ms;
 
     @GetMapping
-    public ResponseEntity<ArrayList<Materia>> getAllMaterias() {
-            return materiaService.getAllMaterias();
+    public String getAllMaterias(Model model) {
+        model.addAttribute("materias", ms.getAllMaterias());
+        return "MateriaTemplates/MateriaIndex";
     }
 
-    @GetMapping("/materia/{codMateria}")
-    public ResponseEntity<Optional<Materia>> getMateriaByCode(@PathVariable("codMateria") String codMateria) {
-        if(codMateria == null){
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }
-        return materiaService.getMateriaByCod(codMateria);
+    @GetMapping("/create")
+    public String showFormMateria(Model model) {
+        Materia materia= new Materia();
+        model.addAttribute("materia",materia);
+        return "MateriaTemplates/MateriaCreate";
+    }
+
+    @PostMapping("/create")
+    public String registerMateria(@ModelAttribute("materia") Materia materia) {
+        ms.registerMateria(materia);
+        return "redirect:/materias";
     }
 
 
-    @PostMapping("/materia")
-    public ResponseEntity<Materia> registerMateria(@RequestBody Materia materiaBody) {
-        return materiaService.registerMateria(materiaBody);
+    @GetMapping("/update/{codMat}")
+    public String modifyMateria(@PathVariable("codMat") long codMat, Model model) {
+        Materia materia = ms.getMateriaByCod(codMat);
+        model.addAttribute("materia", materia);
+        return "MateriaTemplates/MateriaEdit";
+    }
+    @PostMapping("/update/{codMat}")
+    public String modifyMateria(@ModelAttribute("materia") Materia materia,
+                                   @PathVariable("codMat") long codMat) {
+        ms.modifyMateria(materia,codMat);
+        return "redirect:/materias";
     }
 
-    @PutMapping("/materia")
-    public ResponseEntity<Materia> modifyMateria(@RequestBody Materia materiaBody) {
-        return materiaService.registerMateria(materiaBody);
+    @GetMapping("/delete/{codMat}")
+    public String deleteMateria(@PathVariable("codMat") long codMat){
+        ms.deleteMateria(codMat);
+        return "redirect:/materias";
     }
 
-    @DeleteMapping("/materia/{codMateria}")
-    public ResponseEntity deleteMateria(@PathVariable("codMateria") String codMateria){
-        if(codMateria == null){
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }
-        return materiaService.deleteMateria(codMateria);
+    @GetMapping("/find")
+    public String getMateriaByCod(@RequestParam("codMat") long codMat, Model model) {
+        model.addAttribute("materias",ms.getMateriaByCod(codMat));
+        return "MateriaTemplates/MateriaIndex";
     }
+
 }

@@ -1,13 +1,10 @@
 package com.bootcamp.Dia22_ChallengeAlgoritmo.Controller.Respository;
 
 import com.bootcamp.Dia22_ChallengeAlgoritmo.Model.User;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
-public interface UserRepository extends CrudRepository<User,String> {
-    Optional<User> getUserByEmail(String email);
-    User findByEmail(String email);
+public interface UserRepository extends JpaRepository<User,String> {
+    User getUserByEmail(String email);
 }

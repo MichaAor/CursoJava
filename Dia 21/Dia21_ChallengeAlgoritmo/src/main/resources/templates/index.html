@@ -42,17 +42,17 @@
 					<th class="text-center"> Apellido </th>
 					<th class="text-center"> Email </th>
 					<th class="text-center"> Direccion </th>
-					<th> Avatar </th>
+					<th class="text-center"> Avatar </th>
 				</tr>
 				</thead>
 				<tbody style="text-align:center">
 				<tr th:each="cliente: ${clientes}">
 					<td th:text=${cliente.dni}></td>
-					<td th:text=${cliente.nombre}></td>
+					<td></td><img th:src="${cliente.avatar}"><span th:text="${cliente.nombre}"></span></td>
 					<td th:text=${cliente.apellido}></td>
 					<td th:text=${cliente.email}></td>
 					<td th:text=${cliente.direccion}></td>
-					<img th:src="${cliente.avatar}"></td>
+					<td th:text=${cliente.avatar}></td>
 					<td>
 						<a th:href="@{clientes/update/{dni} (dni = ${cliente.dni})}"><button class="btn btn-dark">
 							Update </button></a>

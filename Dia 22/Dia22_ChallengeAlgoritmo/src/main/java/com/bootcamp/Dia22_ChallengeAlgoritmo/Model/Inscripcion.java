@@ -1,18 +1,25 @@
 package com.bootcamp.Dia22_ChallengeAlgoritmo.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "incripciones")
+@Entity
+@Table(name = "inscripciones")
 public class Inscripcion {
-    private String dni;
-    private String codMateria;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @ManyToOne(cascade = {CascadeType.REMOVE})
+    private Materia materia;
+    @ManyToOne(cascade = {CascadeType.REMOVE})
+    private Estudiante estudiante;
+
+    public Inscripcion(Materia mat,Estudiante est){
+        this.materia = mat;
+        this.estudiante = est;
+    }
 }

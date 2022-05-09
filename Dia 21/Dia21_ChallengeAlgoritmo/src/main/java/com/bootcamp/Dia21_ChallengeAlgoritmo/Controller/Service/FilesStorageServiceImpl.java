@@ -46,7 +46,7 @@ public class FilesStorageServiceImpl implements FilesStorageService {
 	    try {
 	      Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
 	    } catch (Exception e) {
-	      throw new RuntimeException("Error fallo al subir el archivo" + e.getMessage());
+	      throw new RuntimeException("Error fallo al subir el archivo " + e.getMessage());
 	    }
 	  }
 
