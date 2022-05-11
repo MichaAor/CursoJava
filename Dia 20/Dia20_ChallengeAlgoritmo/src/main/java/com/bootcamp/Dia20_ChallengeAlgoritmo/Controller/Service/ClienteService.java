@@ -21,6 +21,7 @@ public class ClienteService {
     ClienteRepository clienteRepository;
 
     public Cliente getClienteById(String id){
+        clienteRepository.findb
         return clienteRepository.findById(id).get();
     }
 

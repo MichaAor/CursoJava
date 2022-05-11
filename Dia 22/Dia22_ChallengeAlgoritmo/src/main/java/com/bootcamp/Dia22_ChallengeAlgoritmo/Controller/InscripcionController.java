@@ -22,18 +22,19 @@ public class InscripcionController {
         model.addAttribute("inscripciones",is.getAllInscripciones());
         model.addAttribute("materias",ms.getAllMaterias());
         InscripcionRequest inscripcionRequest = new InscripcionRequest();
-        model.addAttribute("ir", inscripcionRequest);
+        model.addAttribute("inscripcionRequest", inscripcionRequest);
         return "InscripcionIndex";
     }
 
 
     @PostMapping
-    public String registrarInscripcion(@ModelAttribute("ir") InscripcionRequest ir) {
-        is.registrarInscripcion(ir.getCodMat(),ir.getDniEst() );
+    public String registrarInscripcion(@ModelAttribute("inscripcionRequest") InscripcionRequest ir) {
+        System.out.println("COSAS DEL REQUEST" + ir.toString());    //llega bien
+        is.registrarInscripcion(ir.getCodMat(),ir.getDniEst());
         return "redirect:/inscripciones";
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/deleteInscripcion/{id}")
     public String deleteInscripcion(@PathVariable("id") long id) {
         is.deleteInscripcion(id);
         return "redirect:/inscripciones";

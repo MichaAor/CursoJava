@@ -47,7 +47,7 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @GetMapping("/delete/{email}")
+    @GetMapping("/deleteInscripcion/{email}")
     public String deleteUser(@PathVariable("email") String email){
         us.deleteUser(email);
         return "redirect:/users";

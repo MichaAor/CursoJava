@@ -46,7 +46,7 @@ public class MateriaController {
         return "redirect:/materias";
     }
 
-    @GetMapping("/delete/{codMat}")
+    @GetMapping("/deleteInscripcion/{codMat}")
     public String deleteMateria(@PathVariable("codMat") long codMat){
         ms.deleteMateria(codMat);
         return "redirect:/materias";

@@ -25,8 +25,9 @@ public class InscripcionService {
         return inscripciones;
     }
 
-    public boolean registrarInscripcion(long dniEst,long codMat){
-        if(er.getEstudianteByDni(dniEst) != null || mr.getMateriaByCodMat(codMat) != null){
+    public boolean registrarInscripcion(long codMat,long dniEst){
+        System.out.println(er.existsByDni(dniEst));
+        if(!er.existsByDni(dniEst)  || ! mr.existsByCodMat(codMat)){
             return false;
         }
         Estudiante estudiante = er.getEstudianteByDni(dniEst);
@@ -39,9 +40,11 @@ public class InscripcionService {
         return true;
     }
 
-    public boolean deleteInscripcion(long id){
-        if(!ir.existsById(id));{
+    public boolean deleteInscripcion(long id) {
+        if(!ir.existsById(id)){
             return false;
         }
+        ir.deleteById(id);
+        return true;
     }
 }

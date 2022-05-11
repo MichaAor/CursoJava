@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MateriaRepository extends JpaRepository<Materia,Long> {
     Materia getMateriaByCodMat(long codMat);
+    boolean existsByCodMat(long codMat);
 }
