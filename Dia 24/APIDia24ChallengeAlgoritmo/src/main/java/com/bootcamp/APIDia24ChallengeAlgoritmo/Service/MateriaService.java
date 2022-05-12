@@ -1,9 +1,13 @@
 package com.bootcamp.APIDia24ChallengeAlgoritmo.Service;
 
 
+import com.bootcamp.APIDia24ChallengeAlgoritmo.Model.Estudiante;
 import com.bootcamp.APIDia24ChallengeAlgoritmo.Model.Materia;
 import com.bootcamp.APIDia24ChallengeAlgoritmo.Respository.MateriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,8 +21,28 @@ public class MateriaService {
         return (ArrayList<Materia>) mr.findAll();
     }
 
+    public Page<Materia> getAll(int pagNum, int pagSize){
+        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
+        return mr.findAll(ammount);
+    }
+
+    public Page<Materia> asc(int pagNum, int pagSize) {
+        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
+        return mr.ascendant(ammount);
+    }
+
+    public Page<Materia> desc(int pagNum, int pagSize) {
+        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
+        return mr.descendant(ammount);
+    }
+
     public Materia getMateriaByCod(long codMat) {
         return mr.getMateriaByCodMat(codMat);
+    }
+
+    public ArrayList<Materia> byNombre(String nombre)
+    {
+        return mr.byNombre(nombre);
     }
 
     public void registerMateria(Materia materia) {
@@ -33,59 +57,4 @@ public class MateriaService {
     public void deleteMateria(long codMateria) {
         mr.deleteById(codMateria);
     }
-
-    /*
-    public ResponseEntity<ArrayList<Materia>> getAllMaterias(){
-        try {
-            ArrayList<Materia> materias = new ArrayList<Materia>();
-            mr.findAll().forEach(materias::add);
-            if (materias.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(materias, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    public ResponseEntity<Optional<Materia>>getMateriaByCod(String codMateria) {
-        try {
-            Optional<Materia> materias = mr.findById(codMateria);
-            if (materias.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(materias, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-
-
-    public ResponseEntity<Materia> registerMateria(Materia materia) {
-        try {
-            if(mr.getMateriaByCodMat(materia.getCodMateria()) != null){
-                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-            }
-            mr.save(materia);
-            return new ResponseEntity<>(materia, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    public ResponseEntity deleteUser(String codMateria) {
-        try {
-            mr.deleteById(codMateria);
-            Optional<Materia> materia = mr.findById(codMateria);
-            if (!materia.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-            return new ResponseEntity<>(materia, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-    */
-
 }

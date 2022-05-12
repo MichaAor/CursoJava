@@ -4,6 +4,9 @@ package com.bootcamp.APIDia24ChallengeAlgoritmo.Service;
 import com.bootcamp.APIDia24ChallengeAlgoritmo.Model.Estudiante;
 import com.bootcamp.APIDia24ChallengeAlgoritmo.Respository.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,10 +20,34 @@ public class EstudianteService {
         return (ArrayList<Estudiante>) er.findAll();
     }
 
-    public Estudiante getEstudianteByDni(long dni) {
+    public Page<Estudiante> getAll(int pagNum, int pagSize){
+        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
+        return er.findAll(ammount);
+    }
+
+    public Page<Estudiante> asc(int pagNum, int pagSize) {
+        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
+        return er.ascendant(ammount);
+    }
+
+    public Page<Estudiante> desc(int pagNum, int pagSize) {
+        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
+        return er.descendant(ammount);
+    }
+
+
+    public Estudiante byId(long dni) {
         return er.getEstudianteByDni(dni);
     }
 
+    public ArrayList<Estudiante> byNombre(String nombre)
+    {
+        return er.byNombre(nombre);
+    }
+    public ArrayList<Estudiante> byApellido(String apellido)
+    {
+        return  er.byApellido(apellido);
+    }
 
     public void registerEstudiante(Estudiante estudiante) {
         er.save(estudiante);
@@ -35,17 +62,4 @@ public class EstudianteService {
         er.deleteById(dni);
     }
 
-        /*
-    public ResponseEntity<ArrayList<Estudiante>> getEstudiantesByName(String name) {
-        try {
-            ArrayList<Estudiante> user = er.getEstudiantesByName(name);
-            if (user.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(user, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-*/
 }
