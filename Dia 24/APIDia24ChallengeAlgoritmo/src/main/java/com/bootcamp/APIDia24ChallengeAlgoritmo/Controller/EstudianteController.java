@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/estudiantes")
@@ -20,23 +21,65 @@ public class EstudianteController {
         return es.getAllEstudiantes();
     }
 
-    @GetMapping("/page/{pagNum}/{pagSize}")
-    public Page<Estudiante> getAll(@PathVariable("pagNum") int pagNum,
+    @GetMapping("/page/content/{pagNum}/{pagSize}")
+    public List<Estudiante> getAll(@PathVariable("pagNum") int pagNum,
                                    @PathVariable("pagSize") int pagSize) {
-        return es.getAll(pagNum,pagSize);
+        return es.getAllPage(pagNum,pagSize);
     }
 
-    @GetMapping("/asc/{pagNum}/{pagSize}")
-    public Page<Estudiante> getAscAll(@PathVariable("pagNum") int pagNum,
+    @GetMapping("/page/tPages/{pagNum}/{pagSize}")
+    public long getTotalPagesPage(@PathVariable("pagNum") int pagNum,
+                                   @PathVariable("pagSize") int pagSize) {
+        return es.getTotalPagesPage(pagNum,pagSize);
+    }
+
+    @GetMapping("/page/tEl/{pagNum}/{pagSize}")
+    public long getTotalElementsPage(@PathVariable("pagNum") int pagNum,
+                                  @PathVariable("pagSize") int pagSize) {
+        return es.getTotalElementsPage(pagNum,pagSize);
+    }
+
+
+
+    @GetMapping("/asc/content/{pagNum}/{pagSize}")
+    public List<Estudiante> getAscAll(@PathVariable("pagNum") int pagNum,
                                       @PathVariable("pagSize") int pagSize) {
         return es.asc(pagNum,pagSize);
     }
 
-    @GetMapping("/desc/{pagNum}/{pagSize}")
-    public Page<Estudiante> getDescAll(@PathVariable("pagNum") int pagNum,
+    @GetMapping("/asc/tPages/{pagNum}/{pagSize}")
+    public int getAscTotalPages(@PathVariable("pagNum") int pagNum,
+                                      @PathVariable("pagSize") int pagSize) {
+        return es.getTotalPagesAsc(pagNum,pagSize);
+    }
+
+    @GetMapping("/asc/tEl/{pagNum}/{pagSize}")
+    public long getAscTotalElements(@PathVariable("pagNum") int pagNum,
+                                @PathVariable("pagSize") int pagSize) {
+        return es.getTotalElementsAsc(pagNum,pagSize);
+    }
+
+    @GetMapping("/desc/content/{pagNum}/{pagSize}")
+    public List<Estudiante> getDescAll(@PathVariable("pagNum") int pagNum,
                                        @PathVariable("pagSize") int pagSize) {
         return es.desc(pagNum,pagSize);
     }
+
+    @GetMapping("/desc/tPages/{pagNum}/{pagSize}")
+    public int getDescTotalPages(@PathVariable("pagNum") int pagNum,
+                                       @PathVariable("pagSize") int pagSize) {
+        return es.getTotalPagesDes(pagNum,pagSize);
+    }
+
+    @GetMapping("/desc/tEl/{pagNum}/{pagSize}")
+    public long getDescTotalElements(@PathVariable("pagNum") int pagNum,
+                                 @PathVariable("pagSize") int pagSize) {
+        return es.getTotalElementsDes(pagNum,pagSize);
+    }
+
+
+
+
 
     @GetMapping("/dni/{dni}")
     public Estudiante getEstudianteByDni(@PathVariable("dni") long dni) {

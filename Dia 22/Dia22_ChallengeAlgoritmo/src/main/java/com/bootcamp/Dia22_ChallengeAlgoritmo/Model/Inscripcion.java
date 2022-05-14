@@ -16,7 +16,7 @@ public class Inscripcion {
     @ManyToOne(cascade = {CascadeType.REMOVE})
     private Materia materia;
     @ManyToOne(cascade = {CascadeType.REMOVE})
-    private Estudiante estudiante;
+    private Estudiante estudiante;  
 
     public Inscripcion(Materia mat,Estudiante est){
         this.materia = mat;

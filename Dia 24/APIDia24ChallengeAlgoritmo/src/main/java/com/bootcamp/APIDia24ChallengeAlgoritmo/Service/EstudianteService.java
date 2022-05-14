@@ -10,30 +10,72 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class EstudianteService {
     @Autowired
-    EstudianteRepository er;
+    private EstudianteRepository er;
+
 
     public ArrayList<Estudiante> getAllEstudiantes() {
         return (ArrayList<Estudiante>) er.findAll();
     }
 
-    public Page<Estudiante> getAll(int pagNum, int pagSize){
+    public List<Estudiante> getAllPage(int pagNum, int pagSize){
         Pageable ammount= PageRequest.of(pagNum-1, pagSize);
-        return er.findAll(ammount);
+        List<Estudiante> estudiantes = er.findAll(ammount).getContent();
+        return estudiantes;
     }
 
-    public Page<Estudiante> asc(int pagNum, int pagSize) {
+    public int getTotalPagesPage(int pagNum, int pagSize){
         Pageable ammount= PageRequest.of(pagNum-1, pagSize);
-        return er.ascendant(ammount);
+        int total  = er.findAll(ammount).getTotalPages();
+        return total;
     }
 
-    public Page<Estudiante> desc(int pagNum, int pagSize) {
+    public long getTotalElementsPage(int pagNum,int pagSize){
         Pageable ammount= PageRequest.of(pagNum-1, pagSize);
-        return er.descendant(ammount);
+        long total  = er.findAll(ammount).getTotalElements();
+        return total;
     }
+
+    public List<Estudiante> asc(int pagNum, int pagSize) {
+        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
+        return er.ascendant(ammount).getContent();
+    }
+
+    public int getTotalPagesAsc(int pagNum, int pagSize){
+        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
+        int total  = er.ascendant(ammount).getTotalPages();
+        return total;
+    }
+
+    public long getTotalElementsAsc(int pagNum,int pagSize){
+        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
+        long total  = er.ascendant(ammount).getTotalElements();
+        return total;
+    }
+
+
+
+    public List<Estudiante> desc(int pagNum, int pagSize) {
+        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
+        return er.descendant(ammount).getContent();
+    }
+
+    public int getTotalPagesDes(int pagNum, int pagSize){
+        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
+        int total  = er.descendant(ammount).getTotalPages();
+        return total;
+    }
+
+    public long getTotalElementsDes(int pagNum,int pagSize){
+        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
+        long total  = er.descendant(ammount).getTotalElements();
+        return total;
+    }
+
 
 
     public Estudiante byId(long dni) {

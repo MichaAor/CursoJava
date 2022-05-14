@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class EstudianteService {
@@ -20,7 +21,6 @@ public class EstudianteService {
         return er.getEstudianteByDni(dni);
     }
 
-
     public void registerEstudiante(Estudiante estudiante) {
         er.saveEstudiante(estudiante);
     }
@@ -33,17 +33,38 @@ public class EstudianteService {
         er.deleteEstudiante(dni);
     }
 
-        /*
-    public ResponseEntity<ArrayList<Estudiante>> getEstudiantesByName(String name) {
-        try {
-            ArrayList<Estudiante> user = er.getEstudiantesByName(name);
-            if (user.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(user, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    ///////////////////////
+    public List<Estudiante> getContentPage(int numPag,int numSize){
+        return er.getContentPage(numPag,numSize);
     }
-*/
+    public int getTotalPagesPage(int numPag,int numSize){
+        return er.getTotalPagesPage(numPag,numSize);
+    }
+    public long getTotalElementsPage(int numPag,int numSize){
+        return er.getTotalElementsPage(numPag,numSize);
+    }
+
+    ///////////////////////
+    public List<Estudiante> getContentAsc(int numPag,int numSize){
+        return er.getContentAsc(numPag,numSize);
+    }
+    public int getTotalPagesAsc(int numPag,int numSize){
+        return er.getTotalPagesAsc(numPag,numSize);
+    }
+    public long getTotalElementsAsc(int numPag,int numSize){
+        return er.getTotalElementsAsc(numPag,numSize);
+    }
+
+    ///////////////////////
+    public List<Estudiante> getContentDesc(int numPag,int numSize){
+        return er.getContentDesc(numPag,numSize);
+    }
+    public int getTotalPagesDes(int numPag,int numSize){
+       return er.getTotalPagesAsc(numPag,numSize);
+    }
+    public long getTotalElementsDes(int numPag,int numSize){
+        return er.getTotalElementsPage(numPag,numSize);
+    }
+
+
 }
