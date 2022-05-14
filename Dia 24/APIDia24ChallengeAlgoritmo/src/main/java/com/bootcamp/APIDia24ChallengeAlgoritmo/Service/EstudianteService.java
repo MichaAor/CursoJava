@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -40,40 +41,20 @@ public class EstudianteService {
         return total;
     }
 
-    public List<Estudiante> asc(int pagNum, int pagSize) {
-        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
-        return er.ascendant(ammount).getContent();
+
+    public List<Estudiante> getContentBySort(int actual, int size, String sort, String sortField){
+        Pageable cant= PageRequest.of(actual, size, sort.equals("asc")? Sort.by(sortField).ascending():Sort.by(sortField).descending());
+        return er.findAll(cant).getContent();
     }
 
-    public int getTotalPagesAsc(int pagNum, int pagSize){
-        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
-        int total  = er.ascendant(ammount).getTotalPages();
-        return total;
+    public int getTPagBySort(int actual, int size, String sort, String sortField){
+        Pageable cant= PageRequest.of(actual, size, sort.equals("asc")? Sort.by(sortField).ascending():Sort.by(sortField).descending());
+        return er.findAll(cant).getTotalPages();
     }
 
-    public long getTotalElementsAsc(int pagNum,int pagSize){
-        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
-        long total  = er.ascendant(ammount).getTotalElements();
-        return total;
-    }
-
-
-
-    public List<Estudiante> desc(int pagNum, int pagSize) {
-        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
-        return er.descendant(ammount).getContent();
-    }
-
-    public int getTotalPagesDes(int pagNum, int pagSize){
-        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
-        int total  = er.descendant(ammount).getTotalPages();
-        return total;
-    }
-
-    public long getTotalElementsDes(int pagNum,int pagSize){
-        Pageable ammount= PageRequest.of(pagNum-1, pagSize);
-        long total  = er.descendant(ammount).getTotalElements();
-        return total;
+    public long getTElBySort(int actual, int size, String sort, String sortField){
+        Pageable cant= PageRequest.of(actual, size, sort.equals("asc")? Sort.by(sortField).ascending():Sort.by(sortField).descending());
+        return er.findAll(cant).getTotalElements();
     }
 
 

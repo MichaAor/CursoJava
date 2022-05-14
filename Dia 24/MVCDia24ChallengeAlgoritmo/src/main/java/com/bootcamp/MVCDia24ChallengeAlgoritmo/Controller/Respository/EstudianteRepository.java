@@ -20,14 +20,14 @@ public class EstudianteRepository {
 
     public List<Estudiante> getContentPage(int pagNum,int pagSize){
         RestTemplate rt = new RestTemplate();
-        String url = "http://localhost:8081/estudiantes/page/content/"+pagNum+"/"+pagSize;
+        String url = "http://localhost:8081/estudiantes/Pcont/"+pagNum+"/"+pagSize;
         List<Estudiante> estudiantes = rt.getForObject(url,List.class);
         return estudiantes;
     }
 
     public int getTotalPagesPage(int pagNum,int pagSize){
         RestTemplate rt = new RestTemplate();
-        String url = "http://localhost:8081/estudiantes/page/tPage"+pagNum+"/"+pagSize;
+        String url = "http://localhost:8081/estudiantes/PTPag/"+pagNum+"/"+pagSize;
         Integer obj = rt.getForObject(url,Integer.class);
         int total = obj;
         return total;
@@ -35,7 +35,7 @@ public class EstudianteRepository {
 
     public long getTotalElementsPage(int pagNum,int pagSize){
         RestTemplate rt = new RestTemplate();
-        String url = "http://localhost:8081/estudiantes/page/tEl"+pagNum+"/"+pagSize;
+        String url = "http://localhost:8081/estudiantes/PElPag/"+pagNum+"/"+pagSize;
         Long obj = rt.getForObject(url,Long.class);
         long total = obj;
         return total;
@@ -43,62 +43,30 @@ public class EstudianteRepository {
 
     ///////////////////////////////////////////////////////////
 
-    public List<Estudiante> getContentAsc(int pagNum,int pagSize){
+    public List<Estudiante> getContentSort(int pagNum,int pagSize,String sort,String sortfield){
         RestTemplate rt = new RestTemplate();
-        String url = "http://localhost:8081/estudiantes/asc/content"+pagNum+"/"+pagSize;
+        String url = "http://localhost:8081/estudiantes/Scont/"+pagNum+"/"+pagSize+"/"+sort+"/"+sortfield;
         List<Estudiante> estudiantes = rt.getForObject(url,List.class);
         return estudiantes;
     }
 
-    public int getTotalPagesAsc(int pagNum,int pagSize){
+    public int getTotalPagesSort(int pagNum,int pagSize,String sort,String sortfield){
         RestTemplate rt = new RestTemplate();
-        String url = "http://localhost:8081/estudiantes/asc/tPage"+pagNum+"/"+pagSize;
+        String url = "http://localhost:8081/estudiantes/STPag/"+pagNum+"/"+pagSize+"/"+sort+"/"+sortfield;
         Integer obj = rt.getForObject(url,Integer.class);
         int total = obj;
         return total;
     }
 
-    public long getTotalElementsAsc(int pagNum,int pagSize){
+    public long getTotalElementsSort(int pagNum,int pagSize,String sort,String sortfield){
         RestTemplate rt = new RestTemplate();
-        String url = "http://localhost:8081/estudiantes/asc/tEl"+pagNum+"/"+pagSize;
+        String url = "http://localhost:8081/estudiantes/SElPag/"+pagNum+"/"+pagSize+"/"+sort+"/"+sortfield;
         Long obj = rt.getForObject(url,Long.class);
         long total = obj;
         return total;
     }
 
     ///////////////////////////////////////////////////////////
-    public List<Estudiante> getContentDesc(int pagNum,int pagSize){
-        RestTemplate rt = new RestTemplate();
-        String url = "http://localhost:8081/estudiantes/desc/content"+pagNum+"/"+pagSize;
-        List<Estudiante> estudiantes = rt.getForObject(url,List.class);
-        return estudiantes;
-    }
-
-    public int getTotalPagesDesc(int pagNum,int pagSize){
-        RestTemplate rt = new RestTemplate();
-        String url = "http://localhost:8081/estudiantes/page/tPage"+pagNum+"/"+pagSize;
-        Integer obj = rt.getForObject(url,Integer.class);
-        int total = obj;
-        return total;
-    }
-
-    public long getTotalElementsDesc(int pagNum,int pagSize){
-        RestTemplate rt = new RestTemplate();
-        String url = "http://localhost:8081/estudiantes/page/tEl"+pagNum+"/"+pagSize;
-        Long obj = rt.getForObject(url,Long.class);
-        long total = obj;
-        return total;
-    }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -106,8 +74,22 @@ public class EstudianteRepository {
 
     public Estudiante getEstudianteByDni(long dni){
         RestTemplate rt = new RestTemplate();
-        String url = "http://localhost:8081/estudiantes/"+dni;
+        String url = "http://localhost:8081/estudiantes/dni/"+dni;
         Estudiante estudiante = rt.getForObject(url,Estudiante.class);
+        return estudiante;
+    }
+
+    public ArrayList<Estudiante> getEstudianteByNombre(String nombre){
+        RestTemplate rt = new RestTemplate();
+        String url = "http://localhost:8081/estudiantes/nombre/"+nombre;
+        ArrayList<Estudiante> estudiante = rt.getForObject(url,ArrayList.class);
+        return estudiante;
+    }
+
+    public ArrayList<Estudiante> getEstudianteByApellido(String apellido){
+        RestTemplate rt = new RestTemplate();
+        String url = "http://localhost:8081/estudiantes/apellido/"+apellido;
+        ArrayList<Estudiante> estudiante = rt.getForObject(url,ArrayList.class);
         return estudiante;
     }
 

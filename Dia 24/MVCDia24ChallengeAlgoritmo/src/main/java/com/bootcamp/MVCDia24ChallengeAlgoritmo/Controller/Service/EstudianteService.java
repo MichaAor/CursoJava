@@ -20,6 +20,12 @@ public class EstudianteService {
     public Estudiante getEstudianteByDni(long dni) {
         return er.getEstudianteByDni(dni);
     }
+    public ArrayList<Estudiante> getEstudianteByNombre(String nombre) {
+        return er.getEstudianteByNombre(nombre);
+    }
+    public ArrayList<Estudiante> getEstudianteByApellido(String apellido) {
+        return er.getEstudianteByApellido(apellido);
+    }
 
     public void registerEstudiante(Estudiante estudiante) {
         er.saveEstudiante(estudiante);
@@ -45,26 +51,14 @@ public class EstudianteService {
     }
 
     ///////////////////////
-    public List<Estudiante> getContentAsc(int numPag,int numSize){
-        return er.getContentAsc(numPag,numSize);
+    public List<Estudiante> getContentSort(int numPag,int numSize,String sort,String sortField){
+        return er.getContentSort(numPag,numSize,sort,sortField);
     }
-    public int getTotalPagesAsc(int numPag,int numSize){
-        return er.getTotalPagesAsc(numPag,numSize);
+    public int getTotalPagesSort(int numPag,int numSize,String sort,String sortField){
+        return er.getTotalPagesSort(numPag,numSize,sort,sortField);
     }
-    public long getTotalElementsAsc(int numPag,int numSize){
-        return er.getTotalElementsAsc(numPag,numSize);
+    public long getTotalElementsSort(int numPag,int numSize,String sort,String sortField){
+        return er.getTotalElementsSort(numPag,numSize,sort,sortField);
     }
-
-    ///////////////////////
-    public List<Estudiante> getContentDesc(int numPag,int numSize){
-        return er.getContentDesc(numPag,numSize);
-    }
-    public int getTotalPagesDes(int numPag,int numSize){
-       return er.getTotalPagesAsc(numPag,numSize);
-    }
-    public long getTotalElementsDes(int numPag,int numSize){
-        return er.getTotalElementsPage(numPag,numSize);
-    }
-
 
 }

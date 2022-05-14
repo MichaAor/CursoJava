@@ -21,62 +21,37 @@ public class EstudianteController {
         return es.getAllEstudiantes();
     }
 
-    @GetMapping("/page/content/{pagNum}/{pagSize}")
+    @GetMapping("/Pcont/{pagNum}/{pagSize}")
     public List<Estudiante> getAll(@PathVariable("pagNum") int pagNum,
                                    @PathVariable("pagSize") int pagSize) {
         return es.getAllPage(pagNum,pagSize);
     }
 
-    @GetMapping("/page/tPages/{pagNum}/{pagSize}")
-    public long getTotalPagesPage(@PathVariable("pagNum") int pagNum,
-                                   @PathVariable("pagSize") int pagSize) {
-        return es.getTotalPagesPage(pagNum,pagSize);
+    @GetMapping("/PTPag/{actual}/{size}")
+    public int getTotalPageByPage(@PathVariable int actual,@PathVariable int size){
+        return es.getTotalPagesPage(actual,size);
     }
 
-    @GetMapping("/page/tEl/{pagNum}/{pagSize}")
-    public long getTotalElementsPage(@PathVariable("pagNum") int pagNum,
-                                  @PathVariable("pagSize") int pagSize) {
-        return es.getTotalElementsPage(pagNum,pagSize);
+    @GetMapping("/PElPag/{actual}/{size}")
+    public long getTotalElementsByPage(@PathVariable int actual,@PathVariable int size){
+        return es.getTotalElementsPage(actual,size);
     }
 
 
-
-    @GetMapping("/asc/content/{pagNum}/{pagSize}")
-    public List<Estudiante> getAscAll(@PathVariable("pagNum") int pagNum,
-                                      @PathVariable("pagSize") int pagSize) {
-        return es.asc(pagNum,pagSize);
+    @GetMapping("/Scont/{actual}/{size}/{sort}/{sortField}")
+    public List<Estudiante> getEstSort(@PathVariable int actual,@PathVariable int size,@PathVariable String sort,@PathVariable String sortField){
+      return es.getContentBySort(actual,size,sort,sortField);
     }
 
-    @GetMapping("/asc/tPages/{pagNum}/{pagSize}")
-    public int getAscTotalPages(@PathVariable("pagNum") int pagNum,
-                                      @PathVariable("pagSize") int pagSize) {
-        return es.getTotalPagesAsc(pagNum,pagSize);
+    @GetMapping("/STPag/{actual}/{size}/{sort}/{sortField}")
+    public int getTotalPageBySort(@PathVariable int actual,@PathVariable int size,@PathVariable String sort,@PathVariable String sortField){
+        return es.getTPagBySort(actual,size,sort,sortField);
     }
 
-    @GetMapping("/asc/tEl/{pagNum}/{pagSize}")
-    public long getAscTotalElements(@PathVariable("pagNum") int pagNum,
-                                @PathVariable("pagSize") int pagSize) {
-        return es.getTotalElementsAsc(pagNum,pagSize);
+    @GetMapping("/SElPag/{actual}/{size}/{sort}/{sortField}")
+    public long getTotalElementsBySort(@PathVariable int actual,@PathVariable int size,@PathVariable String sort,@PathVariable String sortField){
+        return es.getTElBySort(actual,size,sort,sortField);
     }
-
-    @GetMapping("/desc/content/{pagNum}/{pagSize}")
-    public List<Estudiante> getDescAll(@PathVariable("pagNum") int pagNum,
-                                       @PathVariable("pagSize") int pagSize) {
-        return es.desc(pagNum,pagSize);
-    }
-
-    @GetMapping("/desc/tPages/{pagNum}/{pagSize}")
-    public int getDescTotalPages(@PathVariable("pagNum") int pagNum,
-                                       @PathVariable("pagSize") int pagSize) {
-        return es.getTotalPagesDes(pagNum,pagSize);
-    }
-
-    @GetMapping("/desc/tEl/{pagNum}/{pagSize}")
-    public long getDescTotalElements(@PathVariable("pagNum") int pagNum,
-                                 @PathVariable("pagSize") int pagSize) {
-        return es.getTotalElementsDes(pagNum,pagSize);
-    }
-
 
 
 

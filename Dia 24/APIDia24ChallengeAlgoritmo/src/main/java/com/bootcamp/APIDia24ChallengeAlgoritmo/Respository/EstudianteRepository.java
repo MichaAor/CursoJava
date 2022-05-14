@@ -16,14 +16,11 @@ public interface EstudianteRepository extends JpaRepository<Estudiante,Long> {
 
     boolean existsByDni(long dni);
 
-    @Query(value = "select * from estudiantes s order by s.nombre asc", countQuery = "SELECT count(*) FROM estudiantes", nativeQuery = true)
-    public Page<Estudiante> ascendant(Pageable ammount);
-    @Query(value = "select * from estudiantes s order by s.nombre desc",countQuery = "SELECT count(*) FROM estudiantes", nativeQuery = true)
-    public Page<Estudiante> descendant(Pageable ammount);
-
     @Query(value = "select * from estudiantes s where s.nombre = :nombre", nativeQuery = true)
     public ArrayList<Estudiante> byNombre(@Param("nombre") String nombre);
 
     @Query(value = "select * from estudiantes s where s.apellido = :apellido", nativeQuery = true)
     public ArrayList<Estudiante> byApellido(@Param("apellido") String apellido);
+
+    Page<Estudiante> findAll(Pageable cantidad);
 }

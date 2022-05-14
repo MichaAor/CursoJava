@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/estudiantes")
 //@Api(value = "Controller Estudiantes")
@@ -20,6 +22,17 @@ public class EstudianteController {
         model.addAttribute("estudiantes", es.getAllEstudiantes());
         return "EstudianteTemplates/EstudianteIndex";
     }
+
+    @GetMapping("/page/{pagNum}/{pagSize}")
+    public String getAllEstPage(Model model, @PathVariable int pagNum, @PathVariable int pagSize){
+        model.addAttribute("estudiantes", es.getContentPage(pagNum,pagSize));
+        model.addAttribute("totalPage", es.getTotalPagesPage(pagNum,pagSize));
+        model.addAttribute("totalElements", es.getTotalElementsPage(pagNum,pagSize));
+        model.addAttribute("numPageActual", pagNum);
+        model.addAttribute("numSize", pagSize);
+        return "EstudianteTemplates/EstudianteIndex";
+    }
+
 
     @GetMapping("/create")
     public String showFormEstudiantes(Model model) {
@@ -55,9 +68,22 @@ public class EstudianteController {
     }
 
 
-    @GetMapping("/find")
+    @GetMapping("/findDni")
     public String getEstudianteByDni(@RequestParam("dni") long dni, Model model) {
         model.addAttribute("estudiantes",es.getEstudianteByDni(dni));
         return "EstudianteTemplates/EstudianteIndex";
     }
+
+    @GetMapping("/findNombre")
+    public String getEstudiantesByNombre(@RequestParam("nombre") String nombre, Model model) {
+        model.addAttribute("estudiantes",es.getEstudianteByNombre(nombre));
+        return "EstudianteTemplates/EstudianteIndex";
+    }
+
+    @GetMapping("/findApellido")
+    public String getEstudiantesByApellido(@RequestParam("apellido") String apellido, Model model) {
+        model.addAttribute("estudiantes",es.getEstudianteByApellido(apellido));
+        return "EstudianteTemplates/EstudianteIndex";
+    }
+
 }
