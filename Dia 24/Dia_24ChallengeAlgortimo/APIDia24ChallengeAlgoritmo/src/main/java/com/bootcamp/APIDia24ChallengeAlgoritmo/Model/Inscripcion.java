@@ -1,6 +1,8 @@
-package com.bootcamp.Dia22_ChallengeAlgoritmo.Model;
+package com.bootcamp.APIDia24ChallengeAlgoritmo.Model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -16,7 +18,7 @@ public class Inscripcion {
     @ManyToOne(cascade = {CascadeType.REMOVE})
     private Materia materia;
     @ManyToOne(cascade = {CascadeType.REMOVE})
-    private Estudiante estudiante;  
+    private Estudiante estudiante;
 
     public Inscripcion(Materia mat,Estudiante est){
         this.materia = mat;
